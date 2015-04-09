@@ -1,0 +1,174 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    android:padding="10dp"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@color/white"
+        android:text="Selected Lecture Name Will be Here"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <RatingBar
+        android:id="@+id/MyRating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="15dp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <RatingBar
+        android:id="@+id/RatingBar01"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MyRating"
+        android:layout_below="@+id/MyRating"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/MyRating"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/MyRating"
+        android:background="@color/white"
+        android:text="Category 1" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView01"
+        android:layout_alignTop="@+id/RatingBar01"
+        android:background="@color/white"
+        android:text="Category 2" />
+
+    <RatingBar
+        android:id="@+id/RatingBar04"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/RatingBar03"
+        android:layout_below="@+id/RatingBar03"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/RatingBar02"
+        android:layout_alignLeft="@+id/TextView02"
+        android:background="@color/white"
+        android:text="Category 1" />
+
+    <TextView
+        android:id="@+id/TextView04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView03"
+        android:layout_alignTop="@+id/RatingBar03"
+        android:background="@color/white"
+        android:text="Category 1" />
+
+    <TextView
+        android:id="@+id/TextView05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView04"
+        android:layout_alignTop="@+id/RatingBar04"
+        android:background="@color/white"
+        android:text="Category 1" />
+
+    <RatingBar
+        android:id="@+id/RatingBar02"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/RatingBar01"
+        android:layout_below="@+id/TextView02"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <RatingBar
+        android:id="@+id/RatingBar03"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_below="@+id/RatingBar02"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/RatingBar04"
+        android:layout_alignRight="@+id/textView1"
+        android:layout_below="@+id/TextView05"
+        android:layout_marginTop="18dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:minHeight="100dp"
+        android:text="Comment" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/editText1"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="18dp"
+        android:text="Save" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView1"
+        android:text="Your Rating and Comment will be completely annonymous"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginTop="5dp"
+        android:background="@color/white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="14dp"
+        android:background="@color/white"
+        android:text="Rate Lecture" />
+
+</RelativeLayout>

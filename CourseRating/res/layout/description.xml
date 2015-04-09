@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    android:padding="10dp"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@color/white"
+        android:text="Selected Lecture Name Will be Here"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <RatingBar
+        android:id="@+id/MyRating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="14dp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/MyRating"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/MyRating"
+        android:background="@color/white"
+        android:text="Overall Rating by 5000 users" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="14dp"
+        android:background="@color/white"
+        android:text="This is the description of the course. This is the description of the course. This is the description of the course.
+         \n \n \n
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course.
+         \n \n \n This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+         \n \n \n
+         This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+        \n \n \n This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+        This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+        \n This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+        " />
+
+    
+
+</RelativeLayout>

@@ -1,0 +1,186 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue"
+    android:padding="10dp"
+    tools:context=".MainActivity" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="@color/white"
+        android:text="Selected Lecture Name Will be Here"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/MyRating"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/MyRating"
+        android:background="@color/white"
+        android:text="Overall Rating" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/RatingBar05"
+        android:layout_marginTop="14dp"
+        android:background="@color/white"
+        android:text="This is the description of the course. This is the description of the course. This is the description of the course.
+         \n \n \n
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course.
+         \n \n \n This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+         \n \n \n
+         This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+        \n \n \n This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+        This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+        \n This is the description of the course. This is the description of the course. This is the description of the course.
+        This is the description of the course. This is the description of the course. This is the description of the course. This is the description of the course. 
+        " />
+
+    <RatingBar
+        android:id="@+id/RatingBar01"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MyRating"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="2dp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <RatingBar
+        android:id="@+id/RatingBar02"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RatingBar01"
+        android:layout_marginTop="2dp"
+        android:layout_toLeftOf="@+id/textView2"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <RatingBar
+        android:id="@+id/RatingBar03"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/RatingBar02"
+        android:layout_marginTop="2dp"
+        android:layout_toLeftOf="@+id/textView2"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/RatingBar02"
+        android:layout_alignLeft="@+id/textView2"
+        android:background="@color/white"
+        android:text="Overall Rating" />
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView02"
+        android:layout_alignTop="@+id/RatingBar02"
+        android:background="@color/white"
+        android:text="Overall Rating" />
+
+    <TextView
+        android:id="@+id/TextView04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView03"
+        android:layout_alignTop="@+id/RatingBar03"
+        android:background="@color/white"
+        android:text="Overall Rating" />
+
+    <TextView
+        android:id="@+id/TextView05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView04"
+        android:layout_alignTop="@+id/RatingBar04"
+        android:background="@color/white"
+        android:text="Overall Rating" />
+
+    <TextView
+        android:id="@+id/TextView06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/RatingBar05"
+        android:layout_alignLeft="@+id/TextView05"
+        android:background="@color/white"
+        android:text="Overall Rating" />
+
+    <RatingBar
+        android:id="@+id/MyRating"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView3"
+        android:layout_marginLeft="47dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <RatingBar
+        android:id="@+id/RatingBar04"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TextView04"
+        android:layout_toLeftOf="@+id/textView2"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <RatingBar
+        android:id="@+id/RatingBar05"
+        style="?android:attr/ratingBarStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TextView05"
+        android:layout_toLeftOf="@+id/textView2"
+        android:background="@color/white"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.6" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MyRating"
+        android:layout_below="@+id/textView1"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:text="Anonymous User3" />
+
+</RelativeLayout>
