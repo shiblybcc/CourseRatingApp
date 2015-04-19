@@ -1,0 +1,13 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>l2p.app.development</groupId>
+  <artifactId>course.rating</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Course Rating App</name>
+  <description>An application which allows students to choose some lectures based on student ratings</description>
+  <modules>
+  	<module>course.rating.domain.spec</module>
+  	<module>course.rating.persistence</module>
+  </modules>
+</project>
