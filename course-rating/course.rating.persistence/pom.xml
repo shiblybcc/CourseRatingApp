@@ -5,7 +5,7 @@
     <artifactId>course.rating</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>course-rating-persistence</artifactId>
+  <artifactId>course.rating.persistence</artifactId>
   <name>Persistence</name>
   <description>The persistence layer of the application.</description>
   <dependencies>

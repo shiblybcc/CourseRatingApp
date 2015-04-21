@@ -7,7 +7,7 @@
   <name>Course Rating App</name>
   <description>An application which allows students to choose some lectures based on student ratings</description>
   <modules>
-  	<module>course.rating.domain.spec</module>
+  	<module>course.rating.domain.specification</module>
   	<module>course.rating.persistence</module>
   </modules>
   <dependencies>
