@@ -1,7 +1,7 @@
 package course.rating.util;
 
 
-import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 
 import course.rating.entities.CommentEntity;
 import course.rating.entities.CommentStatisticsEntity;
@@ -16,9 +16,11 @@ import course.rating.entities.SubCommentEntity;
  * 
  * @author TODO...
  */
-@Singleton
+@Stateless
 public class EntityBuilder extends EntityFactory{
 
+	public EntityBuilder(){
+	}
 	
 	public LectureEntity createLectureEntity() {
 		LectureEntity lectureEntity = super.createLectureEntity();

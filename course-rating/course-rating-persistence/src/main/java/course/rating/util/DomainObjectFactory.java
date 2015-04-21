@@ -1,6 +1,6 @@
 package course.rating.util;
 
-import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 
 import course.rating.domain.impl.CommentImpl;
 import course.rating.domain.impl.CommentStatisticsImpl;
@@ -26,9 +26,12 @@ import course.rating.entities.SubCommentEntity;
  * 
  * @author TODO...
  */
-@Singleton
+@Stateless
 public class DomainObjectFactory {
 
+	public DomainObjectFactory(){
+	}
+	
 	public Lecture create(LectureEntity entity){
 		return new LectureImpl(entity);
 	}

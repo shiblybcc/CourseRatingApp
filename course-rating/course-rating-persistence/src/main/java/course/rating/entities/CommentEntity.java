@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -24,7 +25,7 @@ public class CommentEntity extends BasicCommentEntity{
 	@ManyToOne
 	private LectureEntity lectureEntity;
 	
-	@OneToMany(mappedBy="commentEntity", cascade= CascadeType.ALL)
+	@OneToMany(mappedBy="commentEntity", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private Set<SubCommentEntity> subCommentEntitys;
 	
 	public CommentEntity(){

@@ -1,7 +1,5 @@
 package course.rating.domain.impl;
 
-import javax.ejb.EJB;
-
 import course.rating.util.DomainObjectFactory;
 
 /**
@@ -16,8 +14,6 @@ public abstract class AbstractDomainObject<T>{
 
 	protected T state;
 	
-	//FIXME this will not work as this class is not managed...
-	@EJB
 	protected DomainObjectFactory factory;
 	
 	protected AbstractDomainObject(T state){
@@ -29,6 +25,10 @@ public abstract class AbstractDomainObject<T>{
 	
 	public T getState(){
 		return state;
+	}
+	
+	public void setFactory(DomainObjectFactory factory){
+		this.factory = factory;
 	}
 	
 	public String toString(){
