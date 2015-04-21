@@ -16,6 +16,14 @@ public interface BaseComment {
 	public String getContent();
 	
 	/**
+	 * Checks whether the parameter is a valid content.
+	 * 
+	 * @param param  A string
+	 * @return       true iff param is a valid content
+	 */
+	public boolean canSetContent(String param);
+	
+	/**
 	 * Sets the content of this comment.
 	 * 
 	 * @param content   the content to set
@@ -28,13 +36,15 @@ public interface BaseComment {
 	 */
 	public Date getEditionDate();
 	
+	
 	/**
 	 * Sets when the comment was edited/created
 	 * 
 	 * @param date    the edition/creation date
 	 * @return        the instance itself
 	 */
-	public BaseComment setEditionDate(Date date);
+	//TODO not needed as date can be set at creation time...
+	//public BaseComment setEditionDate(Date date);
 	
 	/**
 	 * @return some statistics about this comment

@@ -1,34 +1,34 @@
 package course.rating.entities;
 
-import java.util.Date;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+
+import com.google.common.collect.Sets;
 
 /**
  * 
  * @author TODO...
  *
  */
-//TODO how to define getter/setter for a collection...
-public class CommentEntity {
+@Entity
+public class CommentEntity extends BasicCommentEntity{
 
-	private int id;
+	@NotNull
 	private String title;
-	private String content;
-	private Date date;
-	private CommentStatisticsEntity statistics;
-	private LectureEntity lecture;
-	private Set<SubCommentEntity> subComments;
+
+	@ManyToOne
+	private LectureEntity lectureEntity;
+	
+	@OneToMany(mappedBy="commentEntity", cascade= CascadeType.ALL)
+	private Set<SubCommentEntity> subCommentEntitys;
 	
 	public CommentEntity(){
-		subComments = null; //TODO instantiate the collection...
-	}
-	
-	public int getId(){
-		return this.id;
-	}
-	
-	public void setId(int id){
-		this.id = id;
+		subCommentEntitys = Sets.newHashSet();
 	}
 	
 	public String getTitle(){
@@ -39,35 +39,39 @@ public class CommentEntity {
 		this.title = title;
 	}
 	
-	public String getContent(){
-		return this.content;
+	public LectureEntity getLectureEntity(){
+		return lectureEntity;
 	}
 	
-	public void setContent(String content){
-		this.content = content;
+	public void setLectureEntity(LectureEntity entity){
+		this.lectureEntity = entity;
+	}
+
+	public Set<SubCommentEntity> getSubCommentEntitys(){
+		return this.subCommentEntitys;
 	}
 	
-	public Date getDate(){
-		return this.date;
+	public void setSubCommentEntitys(Set<SubCommentEntity> set){
+		this.subCommentEntitys.addAll(set);
 	}
 	
-	public void setDate(Date date){
-		this.date = date;
+	public String toString(){
+		return this.getTitle() + "\n" + this.getContent();
 	}
 	
-	public CommentStatisticsEntity getStatistics(){
-		return statistics;
+	public boolean equals(Object obj){
+		boolean result = false;
+		if(obj instanceof CommentEntity){
+			CommentEntity entity = (CommentEntity)obj;
+			result = this.title.equals(entity.getTitle());
+			if(this.lectureEntity != null && entity.getLectureEntity() != null){
+				result &= this.lectureEntity.equals(entity.getLectureEntity());
+			}
+		}
+		return result;
 	}
 	
-	public void setStatistics(CommentStatisticsEntity statistics){
-		this.statistics = statistics;
-	}
-	
-	public LectureEntity getLecture(){
-		return lecture;
-	}
-	
-	public void setLecture(LectureEntity lecture){
-		this.lecture = lecture;
+	public int hashCode(){
+		return this.getTitle().hashCode();
 	}
 }

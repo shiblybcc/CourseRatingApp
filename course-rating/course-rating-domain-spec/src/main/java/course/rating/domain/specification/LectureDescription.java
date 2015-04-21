@@ -9,13 +9,20 @@ package course.rating.domain.specification;
  * @author TODO...
  *
  */
-//TODO how to manage video and audio ???
 public interface LectureDescription {
 
 	/**
 	 * @return the textual description of a lecture
 	 */
 	public String getTextDescription();
+	
+	/**
+	 * Checks whether the parameter is a valid description.
+	 * 
+	 * @param description   a text
+	 * @return              true iff description is valide
+	 */
+	public boolean canSetTextDescription(String description);
 	
 	/**
 	 * Sets the textual description of a lecture

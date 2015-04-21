@@ -1,6 +1,6 @@
 package course.rating.domain.specification;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * This interface defines the services offered by 
@@ -17,16 +17,59 @@ public interface Lecture {
 	public String getLectureName();
 	
 	/**
+	 * Sets the name of this lecture.
+	 * 
+	 * @param name  a string
+	 * @return      the instance itself
+	 */
+	public Lecture setLectureName(String name);
+	/**
 	 * @return an object managing the description of this lecture.
 	 */
 	public LectureDescription getLectureDescription();
 
 	/**
-	 * Gets an immutable view of the comments.
+	 * Some conditions need to be satisfy when giving a comment 
+	 * for a lecture. As example consider the following:
+	 * A lecture can only have one comment with a given title.
+	 * 
+	 * @return true iff the given comment can be attached to this lecture
+	 */
+	public boolean canAddComment(Comment comment);
+	
+	/**
+	 * Attaches the given comment to this lecture.
+	 * 
+	 * @param comment  a new comment
+	 */
+	public Lecture addComment(Comment comment);
+	
+	/**
+	 * Checks whether a comment with the given title is
+	 * attached to this lecture.
+	 * 
+	 * @param title   a string
+	 * @return        true iff a comment with title "title" is attached.
+	 */
+	public boolean hasCommentWithTitle(String title);
+	
+	/**
+	 * Gets the comment with the given title which is attached to this lecture.
+	 * 
+	 * @param title   a string
+	 * @return        a comment
+	 * @throws IllegalArgumentException iff hasCommentWithTitle(title) return false
+	 */
+	public Comment getCommentWithTitle(String title) throws IllegalArgumentException;
+	
+	/**
+	 * Gets an unmodifiable view of the comments.
+	 * The comments are sorted according to their edition date.
 	 * 
 	 * @return  a set of comments
 	 */
-	public Set<Comment> getComments();
+	public List<Comment> getAllComments();
+	
 	
 	/**
 	 * @return the number of comments

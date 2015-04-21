@@ -1,6 +1,6 @@
 package course.rating.domain.specification;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * A lecture can be commented. This interface provides
@@ -16,6 +16,7 @@ public interface Comment extends BaseComment{
 	 */
 	public String getTitle();
 	
+	
 	/**
 	 * Sets the title of the comment
 	 * 
@@ -25,11 +26,20 @@ public interface Comment extends BaseComment{
 	public Comment setTitle(String title);
 	
 	/**
-	 * Returns an (immutable) view of the sub-comments.
+	 * Returns an (unmodifiable) view of the sub-comments.
 	 * 
 	 * @return the sub-comments of this comment.
 	 */
-	public Set<SubComment> getSubComments();
+	public List<SubComment> getAllSubComments();
+	
+	/**
+	 * Checks whether a sub-comment can be added to this 
+	 * comment.
+	 * 
+	 * @param subComment  a sub comment
+	 * @return            true iff 
+	 */
+	public boolean canAddSubComment(SubComment subComment);
 	
 	/**
 	 * Adds a sub-comment to the collection of sub-comments.
