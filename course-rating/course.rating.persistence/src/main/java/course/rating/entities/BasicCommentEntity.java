@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  *
  */
 @MappedSuperclass
-public abstract class BasicCommentEntity {
+public abstract class BasicCommentEntity extends AbstractEntity{
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)

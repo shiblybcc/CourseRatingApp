@@ -11,6 +11,8 @@ import course.rating.entities.LectureDescriptionEntity;
  */
 public class LectureDescriptionImpl extends AbstractDomainObject<LectureDescriptionEntity> implements LectureDescription {
 
+	private static final long serialVersionUID = 78897L;
+
 	public LectureDescriptionImpl(LectureDescriptionEntity state) {
 		super(state);
 	}

@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
  *
  */
 @Entity
-public class CommentStatisticsEntity {
+public class CommentStatisticsEntity extends AbstractEntity{
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)

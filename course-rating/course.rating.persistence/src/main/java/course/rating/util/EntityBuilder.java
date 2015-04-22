@@ -33,15 +33,16 @@ public class EntityBuilder extends EntityFactory{
 		lectureEntity.setStatisticsEntity(statEntity);
 		statEntity.setLectureEntity(lectureEntity);
 		
-		//return result
+		lectureEntity.setIsNewEntity(true);
 		return lectureEntity;
 	}
 
 	public CommentEntity createCommentEntity() {
 		CommentEntity commentEntity = super.createCommentEntity();
 		CommentStatisticsEntity statisticsEntity = super.createCommentStatisticsEntity();
-		commentEntity.setStatisticsEntity(statisticsEntity);
 		statisticsEntity.setCommentEntity(commentEntity);
+		commentEntity.setStatisticsEntity(statisticsEntity);
+		commentEntity.setIsNewEntity(true);
 		return commentEntity;
 	}
 
@@ -50,6 +51,7 @@ public class EntityBuilder extends EntityFactory{
 		CommentStatisticsEntity statisticsEntity = super.createCommentStatisticsEntity();
 		statisticsEntity.setCommentEntity(subCommentEntity);
 		subCommentEntity.setStatisticsEntity(statisticsEntity);
+		subCommentEntity.setIsNewEntity(true);
 		return subCommentEntity;
 	}
 }

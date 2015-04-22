@@ -11,6 +11,8 @@ import course.rating.entities.CommentStatisticsEntity;
 public class CommentStatisticsImpl extends AbstractDomainObject<CommentStatisticsEntity> implements CommentStatistics {
 
 	
+	private static final long serialVersionUID = 55665544L;
+
 	public CommentStatisticsImpl(CommentStatisticsEntity state) {
 		super(state);
 	}

@@ -2,6 +2,8 @@ package course.rating.base;
 
 import java.util.List;
 
+import javax.ejb.Local;
+
 import course.rating.domain.specification.Lecture;
 
 /**
@@ -10,7 +12,7 @@ import course.rating.domain.specification.Lecture;
  * @author TODO...
  *
  */
-//TODO a stateless bean. Bean interface
+@Local
 public interface PersistenceFacade {
 
 	public List<Lecture> getAllLectures();

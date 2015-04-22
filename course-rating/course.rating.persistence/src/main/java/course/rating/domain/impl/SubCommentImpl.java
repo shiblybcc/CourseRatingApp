@@ -11,6 +11,8 @@ import course.rating.entities.SubCommentEntity;
  */
 public class SubCommentImpl extends AbstractComment<SubCommentEntity> implements SubComment{
 
+	private static final long serialVersionUID = 1L;
+
 	public SubCommentImpl(SubCommentEntity state) {
 		super(state);
 	}

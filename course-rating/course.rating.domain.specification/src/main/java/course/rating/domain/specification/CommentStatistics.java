@@ -6,7 +6,7 @@ package course.rating.domain.specification;
  * @author TODO...
  *
  */
-public interface CommentStatistics {
+public interface CommentStatistics extends Resource{
 
 	/**
 	 * @return the number of students who like the corresponding comment.

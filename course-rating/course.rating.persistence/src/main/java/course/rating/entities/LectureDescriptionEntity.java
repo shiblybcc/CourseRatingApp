@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
  * The link should be saved in the database...
  */
 @Entity
-public class LectureDescriptionEntity {
+public class LectureDescriptionEntity extends AbstractEntity{
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)

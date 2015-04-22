@@ -13,6 +13,8 @@ import course.rating.entities.LectureStatisticsEntity;
  */
 public class LectureStatisticsImpl extends AbstractDomainObject<LectureStatisticsEntity> implements LectureStatistics {
 
+	private static final long serialVersionUID =66677L;
+
 	public LectureStatisticsImpl(LectureStatisticsEntity state){
 		super(state);
 	}

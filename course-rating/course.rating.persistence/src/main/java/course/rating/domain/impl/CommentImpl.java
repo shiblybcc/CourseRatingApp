@@ -19,6 +19,8 @@ import course.rating.entities.SubCommentEntity;
  */
 public class CommentImpl extends AbstractComment<CommentEntity> implements Comment{
 
+	private static final long serialVersionUID = 122456L;
+
 	public CommentImpl(CommentEntity state) {
 		super(state);
 	}
@@ -58,5 +60,12 @@ public class CommentImpl extends AbstractComment<CommentEntity> implements Comme
 			//TODO logging...
 		}
 		return this;
+	}
+	
+	public void save(){
+		super.save();
+		for(SubComment subComment : getAllSubComments()){
+			subComment.save();
+		}
 	}
 }

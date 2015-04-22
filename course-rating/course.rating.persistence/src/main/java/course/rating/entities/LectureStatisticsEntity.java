@@ -14,7 +14,7 @@ import javax.persistence.OneToOne;
  */
 //TODO complete this class. What about score, etc...
 @Entity
-public class LectureStatisticsEntity {
+public class LectureStatisticsEntity extends AbstractEntity{
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)

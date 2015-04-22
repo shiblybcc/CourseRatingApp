@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
@@ -20,7 +22,11 @@ import com.google.common.collect.Sets;
  *
  */
 @Entity
-public class LectureEntity {
+@NamedQueries({
+	@NamedQuery(name="getAllLectureEntities", query="SELECT l FROM LectureEntity l"),
+	@NamedQuery(name="getLectureEntityWithUniqueName", query="SELECT l FROM LectureEntity l WHERE l.uniqueName= :uniqueName"),
+})
+public class LectureEntity extends AbstractEntity{
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -94,6 +100,15 @@ public class LectureEntity {
 	
 	public void setCommentEntitys(Set<CommentEntity> set){
 		this.commentEntitys.addAll(set);
+	}
+	
+	public void setIsNewEntity(boolean param){
+		super.setIsNewEntity(param);
+		this.descriptionEntity.setIsNewEntity(param);
+		this.statisticsEntity.setIsNewEntity(param);
+		for(CommentEntity entity : commentEntitys){
+			entity.setIsNewEntity(param);
+		}
 	}
 	
 	public String toString(){

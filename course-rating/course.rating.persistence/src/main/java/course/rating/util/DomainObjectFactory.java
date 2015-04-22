@@ -1,7 +1,9 @@
 package course.rating.util;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import course.rating.dao.GlobalDao;
 import course.rating.domain.impl.CommentImpl;
 import course.rating.domain.impl.CommentStatisticsImpl;
 import course.rating.domain.impl.LectureDescriptionImpl;
@@ -29,31 +31,52 @@ import course.rating.entities.SubCommentEntity;
 @Stateless
 public class DomainObjectFactory {
 
+	@EJB
+	private GlobalDao dao;
+	
 	public DomainObjectFactory(){
 	}
 	
 	public Lecture create(LectureEntity entity){
-		return new LectureImpl(entity);
+		LectureImpl lecture = new LectureImpl(entity);
+		lecture.setFactory(this);
+		lecture.setStateManager(dao);
+		return lecture;
 	}
 	
 	public LectureDescription create(LectureDescriptionEntity entity){
-		return new LectureDescriptionImpl(entity);
+		LectureDescriptionImpl description = new LectureDescriptionImpl(entity);
+		description.setFactory(this);
+		description.setStateManager(dao);
+		return description;
 	}
 	
 	public LectureStatistics create(LectureStatisticsEntity entity){
-		return new LectureStatisticsImpl(entity);
+		LectureStatisticsImpl statistics = new LectureStatisticsImpl(entity);
+		statistics.setFactory(this);
+		statistics.setStateManager(dao);
+		return statistics;
 	}
 	
 	public Comment create(CommentEntity entity){
-		return new CommentImpl(entity);
+		CommentImpl comment = new CommentImpl(entity);
+		comment.setFactory(this);
+		comment.setStateManager(dao);
+		return comment;
 	}
 	
 	public SubComment create(SubCommentEntity entity){
-		return new SubCommentImpl(entity);
+		SubCommentImpl subComment = new SubCommentImpl(entity);
+		subComment.setFactory(this);
+		subComment.setStateManager(dao);
+		return subComment;
 	}
 	
 	public CommentStatistics create(CommentStatisticsEntity entity){
-		return new CommentStatisticsImpl(entity);
+		CommentStatisticsImpl statistics = new CommentStatisticsImpl(entity);
+		statistics.setFactory(this);
+		statistics.setStateManager(dao);
+		return statistics;
 	}
 	
 }

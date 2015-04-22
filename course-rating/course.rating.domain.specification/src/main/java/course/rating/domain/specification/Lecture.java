@@ -9,7 +9,7 @@ import java.util.List;
  * @author TODO...
  *
  */
-public interface Lecture {
+public interface Lecture extends Resource{
 
 	/**
 	 * @return the name of the lecture
@@ -70,6 +70,12 @@ public interface Lecture {
 	 */
 	public List<Comment> getAllComments();
 	
+	/**
+	 * Gets the titles of all comments attached to this lecture.
+	 * 
+	 * @return  a list of all comments.
+	 */
+	public List<String> getAllCommentTitles();
 	
 	/**
 	 * @return the number of comments

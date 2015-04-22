@@ -3,8 +3,10 @@ package course.rating.base;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Local;
 import javax.ejb.Stateless;
 
+import course.rating.dao.GlobalDao;
 import course.rating.domain.specification.Lecture;
 import course.rating.util.DomainObjectFactory;
 import course.rating.util.EntityBuilder;
@@ -15,6 +17,7 @@ import course.rating.util.EntityBuilder;
  * @author TODO...
  *
  */
+@Local(PersistenceFacade.class)
 @Stateless
 public class PersistenceFacadeImpl implements PersistenceFacade{
 
@@ -22,6 +25,9 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 	private EntityBuilder entityBuilder;
 	@EJB
 	private DomainObjectFactory factory;
+	
+	@EJB
+	private GlobalDao dao;
 	
 	//TODO dao...
 	

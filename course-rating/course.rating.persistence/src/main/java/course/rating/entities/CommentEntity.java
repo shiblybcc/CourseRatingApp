@@ -56,6 +56,14 @@ public class CommentEntity extends BasicCommentEntity{
 		this.subCommentEntitys.addAll(set);
 	}
 	
+	public void setIsNewEntity(boolean param){
+		super.setIsNewEntity(param);
+		this.statisticsEntity.setIsNewEntity(param);
+		for(SubCommentEntity entity : subCommentEntitys){
+			entity.setIsNewEntity(param);
+		}
+	}
+	
 	public String toString(){
 		return this.getTitle() + "\n" + this.getContent();
 	}

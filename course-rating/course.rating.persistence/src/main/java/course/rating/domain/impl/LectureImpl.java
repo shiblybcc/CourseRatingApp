@@ -14,6 +14,7 @@ import course.rating.domain.specification.LectureDescription;
 import course.rating.domain.specification.LectureStatistics;
 import course.rating.entities.CommentEntity;
 import course.rating.entities.LectureEntity;
+import course.rating.util.StringUtil;
 
 /**
  * Default implementation of {@link Lecture}
@@ -23,6 +24,7 @@ import course.rating.entities.LectureEntity;
  */
 public class LectureImpl extends AbstractDomainObject<LectureEntity> implements Lecture{
 
+	private static final long serialVersionUID = 199877L;
 	private Map<String, Comment> titleToComment;
 	
 	public LectureImpl(LectureEntity state) {
@@ -39,8 +41,9 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements 
 
 	public Lecture setLectureName(String name){
 		getState().setName(name);
-		String uniqueName = name.toLowerCase().replaceAll("\\s", "");
-		//the unique identifies a lecture. e.g: "WebTechnologies" and "WebTechnologies " denote the same lecture
+		String uniqueName = StringUtil.toLowerCaseWithoutWhiteSpaces(name);
+		//the unique name identifies a lecture. 
+		//e.g: "WebTechnologies" and "WebTechnologies " denote the same lecture. Note the white space
 		getState().setUniqueName(uniqueName);
 		return this;
 	}
@@ -89,11 +92,26 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements 
 		return Collections.unmodifiableList(resultList);
 	}
 
+	public List<String> getAllCommentTitles(){
+		List<String> resultList = Lists.newArrayList();
+		for(Comment comment : titleToComment.values()){
+			resultList.add(comment.getTitle());
+		}
+		return resultList;
+	}
+	
 	public int getCommentCount() {
 		return titleToComment.values().size();
 	}
 
 	public LectureStatistics getStatistics() {
 		return factory.create(getState().getStatisticsEntity());
+	}
+
+	public void save() {
+	   saveState();
+	   for(Comment comment : titleToComment.values()){
+		   comment.save();
+	   }
 	}
 }

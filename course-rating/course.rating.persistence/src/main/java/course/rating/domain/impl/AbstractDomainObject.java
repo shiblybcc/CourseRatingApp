@@ -1,6 +1,10 @@
 package course.rating.domain.impl;
 
+
+import course.rating.domain.specification.Resource;
+import course.rating.entities.AbstractEntity;
 import course.rating.util.DomainObjectFactory;
+import course.rating.util.StateManager;
 
 /**
  * An abstract implementation of a domain object.
@@ -9,12 +13,15 @@ import course.rating.util.DomainObjectFactory;
  *
  * @param <T>  the type of entity which defines the states of this object
  */
-//TODO a domain object should saves its state ...
-public abstract class AbstractDomainObject<T>{
+public abstract class AbstractDomainObject<T extends AbstractEntity> implements Resource{
+
+	private static final long serialVersionUID = 938383937L;
 
 	protected T state;
 	
 	protected DomainObjectFactory factory;
+	
+	protected StateManager stateMgr;
 	
 	protected AbstractDomainObject(T state){
 		if(state == null){
@@ -29,6 +36,18 @@ public abstract class AbstractDomainObject<T>{
 	
 	public void setFactory(DomainObjectFactory factory){
 		this.factory = factory;
+	}
+	
+	public void setStateManager(StateManager manager){
+		this.stateMgr = manager;
+	}
+	
+	protected void saveState(){
+		stateMgr.save(state);
+	}
+	
+	public void save(){
+		saveState();
 	}
 	
 	public String toString(){

@@ -9,7 +9,7 @@ package course.rating.domain.specification;
  * @author TODO...
  *
  */
-public interface LectureDescription {
+public interface LectureDescription extends Resource{
 
 	/**
 	 * @return the textual description of a lecture

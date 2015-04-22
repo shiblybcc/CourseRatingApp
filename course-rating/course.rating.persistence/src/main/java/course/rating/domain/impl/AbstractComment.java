@@ -15,6 +15,8 @@ import course.rating.entities.BasicCommentEntity;
  */
 public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomainObject<BasicCommentEntity> implements BaseComment{
 
+	private static final long serialVersionUID = 11223L;
+
 	protected AbstractComment(BasicCommentEntity state) {
 		super(state);
 	}

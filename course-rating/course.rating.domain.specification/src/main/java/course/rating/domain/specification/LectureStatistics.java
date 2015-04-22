@@ -8,7 +8,7 @@ import java.util.Map;
  * @author TODO...
  *
  */
-public interface LectureStatistics {
+public interface LectureStatistics extends Resource{
 
 	/**
 	 * @return  the score of this lecture.

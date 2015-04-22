@@ -8,7 +8,7 @@ import java.util.Date;
  * @author TODO...
  *
  */
-public interface BaseComment {
+public interface BaseComment extends Resource{
   
 	/**
 	 * @return the content of this comment

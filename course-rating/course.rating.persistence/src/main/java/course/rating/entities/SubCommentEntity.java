@@ -28,6 +28,11 @@ public class SubCommentEntity extends BasicCommentEntity{
 		this.commentEntity = entity;
 	}
 	
+	public void setIsNewEntity(boolean param){
+		super.setIsNewEntity(param);
+		this.statisticsEntity.setIsNewEntity(param);
+	}
+	
 	public boolean equals(Object obj){
 		boolean result = false;
 		if(obj instanceof SubCommentEntity){
