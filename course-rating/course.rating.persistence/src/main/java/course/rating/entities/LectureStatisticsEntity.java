@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class LectureStatisticsEntity extends AbstractEntity{
 
+	private static final long serialVersionUID = 78995L;
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;

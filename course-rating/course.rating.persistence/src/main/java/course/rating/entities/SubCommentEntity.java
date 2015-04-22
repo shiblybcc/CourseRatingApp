@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class SubCommentEntity extends BasicCommentEntity{
 	
+	private static final long serialVersionUID = 55467L;
 	@ManyToOne
 	private CommentEntity commentEntity;
 	

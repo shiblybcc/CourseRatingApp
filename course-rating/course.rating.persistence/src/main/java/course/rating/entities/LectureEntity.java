@@ -28,6 +28,8 @@ import com.google.common.collect.Sets;
 })
 public class LectureEntity extends AbstractEntity{
 
+	private static final long serialVersionUID = 654378L;
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;

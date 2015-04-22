@@ -19,6 +19,8 @@ import com.google.common.collect.Sets;
 @Entity
 public class CommentEntity extends BasicCommentEntity{
 
+	private static final long serialVersionUID = 556782L;
+
 	@NotNull
 	private String title;
 

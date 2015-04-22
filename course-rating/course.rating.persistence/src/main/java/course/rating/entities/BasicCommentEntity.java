@@ -2,10 +2,11 @@ package course.rating.entities;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Inheritance;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,8 +17,11 @@ import javax.validation.constraints.NotNull;
  * @author TODO...
  *
  */
-@MappedSuperclass
+@Entity
+@Inheritance
 public abstract class BasicCommentEntity extends AbstractEntity{
+
+	private static final long serialVersionUID = 56789945L;
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -60,7 +64,6 @@ public abstract class BasicCommentEntity extends AbstractEntity{
 		this.date = date;
 	}
 	
-
 	public CommentStatisticsEntity getStatisticsEntity(){
 		return statisticsEntity;
 	}

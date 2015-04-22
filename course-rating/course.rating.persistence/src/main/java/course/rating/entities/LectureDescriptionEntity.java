@@ -22,6 +22,9 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class LectureDescriptionEntity extends AbstractEntity{
 
+	
+	private static final long serialVersionUID = 4563245L;
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;

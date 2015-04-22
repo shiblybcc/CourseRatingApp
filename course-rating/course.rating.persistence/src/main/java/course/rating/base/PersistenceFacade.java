@@ -33,6 +33,14 @@ public interface PersistenceFacade {
 	public Optional<Lecture> getLecture(String lectureName);
 	
 	/**
+	 * This method is provided to support search.
+	 * 
+	 * @param proposedLectureName   a string
+	 * @return a list of lectures whose names are similar to the given string
+	 */
+	public List<Lecture> getAllLecturesMatching(String proposedLectureName);
+	
+	/**
 	 * Add a new comment or sub-comment. This method works as follows:
 	 * 
 	 * 1-) If for the given lecture name, no data is available in the DB, then new resources

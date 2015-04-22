@@ -15,6 +15,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class CommentStatisticsEntity extends AbstractEntity{
 
+	private static final long serialVersionUID = 3445512333L;
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private int id;

@@ -60,6 +60,11 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 		return Optional.fromNullable(lecture);
 	}
 
+	public List<Lecture> getAllLecturesMatching(String proposedLectureName){
+		//TODO implements me...
+		return Collections.emptyList();
+	}
+	
 	public void addComment(String lectureName, String title, String content) {
 		Optional<Lecture> optionalLecture = getLecture(lectureName);
 		Lecture lecture;
