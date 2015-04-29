@@ -1,0 +1,1 @@
+The UI prototype files should be stored in this folder
