@@ -9,7 +9,7 @@ import course.rating.util.StateManager;
 /**
  * An abstract implementation of a domain object.
  * 
- * @author TODO...
+ * @author CR Team
  *
  * @param <T>  the type of entity which defines the states of this object
  */
@@ -48,6 +48,11 @@ public abstract class AbstractDomainObject<T extends AbstractEntity> implements 
 	
 	public void save(){
 		saveState();
+	}
+	
+	public void delete(){
+		stateMgr.delete(state);
+		state = null;
 	}
 	
 	public String toString(){

@@ -7,17 +7,23 @@ import javax.ejb.Local;
 
 import com.google.common.base.Optional;
 
+import course.rating.domain.specification.Comment;
 import course.rating.domain.specification.Lecture;
+import course.rating.domain.specification.SubComment;
 
 /**
  * The main entry point of the persistence layer.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 @Local
 public interface PersistenceFacade {
 
+	/**
+	 * @return a new Lecture object
+	 */
+	public Lecture newLecture();
 	
 	/**
 	 * @return all available lectures.
@@ -40,6 +46,21 @@ public interface PersistenceFacade {
 	 */
 	public List<Lecture> getAllLecturesMatching(String proposedLectureName);
 	
+	/**
+	 * Deletes the lecture with the given name
+	 * @param name  a lecture name
+	 */
+	public void deleteLectureWithName(String name);
+	/**
+	 * @return a new Comment object
+	 */
+	public Comment newComment();
+	
+	/**
+	 * 
+	 * @return a new Sub-Comment object
+	 */
+	public SubComment newSubComment();
 	/**
 	 * Add a new comment or sub-comment. This method works as follows:
 	 * 

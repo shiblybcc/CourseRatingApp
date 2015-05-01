@@ -2,6 +2,7 @@ package course.rating.entities;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,9 +14,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 /**
- * 
- * @author TODO...
- *
+ * @author CR Team
  */
 @Entity
 @Inheritance
@@ -33,10 +32,10 @@ public abstract class BasicCommentEntity extends AbstractEntity{
 	@Temporal(TemporalType.DATE)
 	protected Date date;
 	
-	@OneToOne
+	@OneToOne(cascade= CascadeType.ALL)
 	protected CommentStatisticsEntity statisticsEntity;
 	
-	protected BasicCommentEntity(){
+	public BasicCommentEntity(){
 		this.date = new Date();
 	}
 	
@@ -72,6 +71,11 @@ public abstract class BasicCommentEntity extends AbstractEntity{
 		this.statisticsEntity = entity;
 	}
 	
+	public void setIsNewEntity(boolean param){
+		super.setIsNewEntity(param);
+		this.statisticsEntity.setIsNewEntity(param);
+	}
+	
 	public String toString(){
 		return this.content;
 	}
@@ -80,12 +84,15 @@ public abstract class BasicCommentEntity extends AbstractEntity{
 		boolean result = false;
 		if(obj instanceof BasicCommentEntity){
 			BasicCommentEntity bc = (BasicCommentEntity)obj;
-			result = this.date.equals(bc.getDate()) && this.content.equals(bc.getContent());
+			result = this.date.equals(bc.getDate());
+			if(this.content != null){
+		      result &= this.content.equals(bc.getContent());
+			}
 		}
 		return result;
 	}
 	
 	public int hashCode(){
-		return this.date.hashCode() + this.content.hashCode();
+		return this.date.hashCode();
 	}
 }

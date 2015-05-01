@@ -3,7 +3,7 @@ package course.rating.domain.specification;
 /**
  * Some category's names.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface RatingCategory {

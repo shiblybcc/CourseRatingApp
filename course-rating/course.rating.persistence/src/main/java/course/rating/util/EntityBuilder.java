@@ -14,7 +14,7 @@ import course.rating.entities.SubCommentEntity;
 /**
  * Builder for Entities.
  * 
- * @author TODO...
+ * @author CR Team
  */
 @Stateless
 public class EntityBuilder extends EntityFactory{
@@ -28,10 +28,10 @@ public class EntityBuilder extends EntityFactory{
 		LectureStatisticsEntity statEntity = super.createLectureStatisticsEntity();
 		
 		lectureEntity.setDescriptionEntity(descEntity);
-		descEntity.setLectureEntity(lectureEntity);
+		//descEntity.setLectureEntity(lectureEntity);
 		
 		lectureEntity.setStatisticsEntity(statEntity);
-		statEntity.setLectureEntity(lectureEntity);
+		//statEntity.setLectureEntity(lectureEntity);
 		
 		lectureEntity.setIsNewEntity(true);
 		return lectureEntity;
@@ -40,7 +40,7 @@ public class EntityBuilder extends EntityFactory{
 	public CommentEntity createCommentEntity() {
 		CommentEntity commentEntity = super.createCommentEntity();
 		CommentStatisticsEntity statisticsEntity = super.createCommentStatisticsEntity();
-		statisticsEntity.setCommentEntity(commentEntity);
+		//statisticsEntity.setCommentEntity(commentEntity);
 		commentEntity.setStatisticsEntity(statisticsEntity);
 		commentEntity.setIsNewEntity(true);
 		return commentEntity;
@@ -49,7 +49,7 @@ public class EntityBuilder extends EntityFactory{
 	public SubCommentEntity createSubCommentEntity() {
 		SubCommentEntity subCommentEntity = super.createSubCommentEntity();
 		CommentStatisticsEntity statisticsEntity = super.createCommentStatisticsEntity();
-		statisticsEntity.setCommentEntity(subCommentEntity);
+		//statisticsEntity.setCommentEntity(subCommentEntity);
 		subCommentEntity.setStatisticsEntity(statisticsEntity);
 		subCommentEntity.setIsNewEntity(true);
 		return subCommentEntity;

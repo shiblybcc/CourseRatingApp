@@ -3,7 +3,7 @@ package course.rating.domain.specification;
 /**
  * API used to managed statistics about a comment.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface CommentStatistics extends Resource{

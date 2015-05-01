@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Defines the commonalities between comments and sub-comments.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface BaseComment extends Resource{
@@ -50,5 +50,4 @@ public interface BaseComment extends Resource{
 	 * @return some statistics about this comment
 	 */
 	public CommentStatistics getStatistics();
-	
 }

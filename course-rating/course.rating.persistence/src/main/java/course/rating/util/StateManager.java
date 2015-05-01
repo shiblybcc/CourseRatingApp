@@ -4,7 +4,7 @@ import course.rating.entities.AbstractEntity;
 
 /**
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface StateManager {

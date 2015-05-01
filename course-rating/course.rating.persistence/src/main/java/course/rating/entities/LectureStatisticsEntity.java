@@ -1,15 +1,15 @@
 package course.rating.entities;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+//import javax.persistence.OneToOne;
 
 /**
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 //TODO complete this class. What about score, etc...
@@ -22,8 +22,11 @@ public class LectureStatisticsEntity extends AbstractEntity{
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
 	
-	@OneToOne(mappedBy="statisticsEntity", cascade=CascadeType.ALL)
-	private LectureEntity lectureEntity;
+	//@OneToOne(mappedBy="statisticsEntity", cascade=CascadeType.ALL)
+	//private LectureEntity lectureEntity;
+	
+	public LectureStatisticsEntity(){
+	}
 	
 	public long getId(){
 		return id;
@@ -33,6 +36,7 @@ public class LectureStatisticsEntity extends AbstractEntity{
 		this.id = id;
 	}
 	
+	/*
 	public void setLectureEntity(LectureEntity entity){
 		this.lectureEntity = entity;
 	}
@@ -40,5 +44,6 @@ public class LectureStatisticsEntity extends AbstractEntity{
 	public LectureEntity getLectureEntity(){
 		return this.lectureEntity;
 	}
+	*/
 	//TODO toString, equals and hashCode.....
 }

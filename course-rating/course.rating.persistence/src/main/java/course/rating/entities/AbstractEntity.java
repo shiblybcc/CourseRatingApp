@@ -7,7 +7,7 @@ import java.io.Serializable;
  * between all entities. These features
  * are not persisted.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public class AbstractEntity  implements Serializable{

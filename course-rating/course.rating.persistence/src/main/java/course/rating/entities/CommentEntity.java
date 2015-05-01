@@ -2,10 +2,9 @@ package course.rating.entities;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -13,7 +12,7 @@ import com.google.common.collect.Sets;
 
 /**
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 @Entity
@@ -24,10 +23,10 @@ public class CommentEntity extends BasicCommentEntity{
 	@NotNull
 	private String title;
 
-	@ManyToOne
-	private LectureEntity lectureEntity;
+	//@ManyToOne
+	//private LectureEntity lectureEntity;
 	
-	@OneToMany(mappedBy="commentEntity", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER) //mappedBy="commentEntity", 
 	private Set<SubCommentEntity> subCommentEntitys;
 	
 	public CommentEntity(){
@@ -42,6 +41,7 @@ public class CommentEntity extends BasicCommentEntity{
 		this.title = title;
 	}
 	
+	/*
 	public LectureEntity getLectureEntity(){
 		return lectureEntity;
 	}
@@ -49,7 +49,7 @@ public class CommentEntity extends BasicCommentEntity{
 	public void setLectureEntity(LectureEntity entity){
 		this.lectureEntity = entity;
 	}
-
+*/
 	public Set<SubCommentEntity> getSubCommentEntitys(){
 		return this.subCommentEntitys;
 	}
@@ -75,9 +75,6 @@ public class CommentEntity extends BasicCommentEntity{
 		if(obj instanceof CommentEntity){
 			CommentEntity entity = (CommentEntity)obj;
 			result = this.title.equals(entity.getTitle());
-			if(this.lectureEntity != null && entity.getLectureEntity() != null){
-				result &= this.lectureEntity.equals(entity.getLectureEntity());
-			}
 		}
 		return result;
 	}

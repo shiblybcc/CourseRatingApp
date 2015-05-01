@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * API provided for managing some statistics about a lecture.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface LectureStatistics extends Resource{

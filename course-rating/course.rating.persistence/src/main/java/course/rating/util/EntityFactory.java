@@ -10,7 +10,7 @@ import course.rating.entities.SubCommentEntity;
 /**
  * Factory class for instantiating entities.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 

@@ -1,8 +1,9 @@
 package course.rating.util;
 
 /**
- * Some string utility..
- * @author TODO...
+ * Some string utilities.
+ * 
+ * @author CR Team
  *
  */
 public class StringUtil {

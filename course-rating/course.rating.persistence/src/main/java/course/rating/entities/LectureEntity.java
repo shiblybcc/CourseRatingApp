@@ -18,7 +18,7 @@ import com.google.common.collect.Sets;
 
 /**
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 @Entity
@@ -43,13 +43,13 @@ public class LectureEntity extends AbstractEntity{
 	@NotNull
 	private String uniqueName;
 	
-	@OneToOne
+	@OneToOne(cascade= CascadeType.ALL)
 	private LectureDescriptionEntity descriptionEntity;
 	
 	@OneToOne(cascade= CascadeType.ALL)
 	private LectureStatisticsEntity statisticsEntity;
 	
-	@OneToMany(mappedBy ="lectureEntity", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER)  //mappedBy ="lectureEntity",
 	private Set<CommentEntity> commentEntitys;
 	
 	public LectureEntity(){

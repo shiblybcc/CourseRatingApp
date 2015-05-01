@@ -6,7 +6,7 @@ import course.rating.entities.CommentStatisticsEntity;
 /**
  * Default implementation of {@link CommentStatisticsEntity}.
  * 
- * @author TODO...
+ * @author CR Team
  */
 public class CommentStatisticsImpl extends AbstractDomainObject<CommentStatisticsEntity> implements CommentStatistics {
 

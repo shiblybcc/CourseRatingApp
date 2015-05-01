@@ -6,7 +6,7 @@ import course.rating.entities.SubCommentEntity;
 /**
  * Default implementation of {@link SubComment}.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public class SubCommentImpl extends AbstractComment<SubCommentEntity> implements SubComment{

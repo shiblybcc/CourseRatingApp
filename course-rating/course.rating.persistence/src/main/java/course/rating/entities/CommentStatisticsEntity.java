@@ -1,15 +1,14 @@
 package course.rating.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+//import javax.persistence.OneToOne;
 
 /**
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 @Entity
@@ -24,8 +23,8 @@ public class CommentStatisticsEntity extends AbstractEntity{
 	private int likeCount;
 	private int dislikeCount;
 	
-	@OneToOne(mappedBy="statisticsEntity",cascade= CascadeType.ALL)
-	private BasicCommentEntity commentEntity;
+	//@OneToOne(mappedBy="statisticsEntity")
+	//private BasicCommentEntity commentEntity;
 	
 	public CommentStatisticsEntity(){
 	}
@@ -54,6 +53,7 @@ public class CommentStatisticsEntity extends AbstractEntity{
 		this.dislikeCount = count;
 	}
 	
+	/*
 	public BasicCommentEntity getCommentEntity(){
 		return this.commentEntity;
 	}
@@ -61,7 +61,7 @@ public class CommentStatisticsEntity extends AbstractEntity{
 	public void setCommentEntity(BasicCommentEntity entity){
 		this.commentEntity = entity;
 	}
-	
+	*/
 	public String toString(){
 		return "Statistics : " + likeCount + " people like while " + dislikeCount + " don't like this comment." ;
 	}
@@ -70,8 +70,7 @@ public class CommentStatisticsEntity extends AbstractEntity{
 		boolean result = false;
 		if(obj instanceof CommentStatisticsEntity){
 			CommentStatisticsEntity entity = (CommentStatisticsEntity)obj;
-			result  = this.commentEntity.equals(entity.getCommentEntity()) && this.likeCount == entity.getLikeCount()
-					&& this.dislikeCount == entity.getDislikeCount();
+			result  = this.likeCount == entity.getLikeCount() && this.dislikeCount == entity.getDislikeCount();
 		}
 		return result;
 	}

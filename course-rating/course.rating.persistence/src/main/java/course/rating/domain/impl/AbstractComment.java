@@ -9,7 +9,7 @@ import course.rating.entities.BasicCommentEntity;
 /**
  * Default implementation of {@link BaseComment}
  * 
- * @author TODO...
+ * @author CR Team
  *
  * @param <T> can either be CommentEntity or SubCommentEntity
  */
@@ -28,6 +28,7 @@ public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomai
 	public boolean canSetContent(String param){
 	   boolean result = false;
 	   if(param != null){
+		   param = param.replaceAll("\\s", "");
 		   result = !param.isEmpty();
 	   }
 	   return result;
@@ -63,5 +64,10 @@ public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomai
 	
 	public CommentStatistics getStatistics() {
 		return factory.create(getState().getStatisticsEntity());
+	}
+	
+	public void delete(){
+		this.getStatistics().delete();
+		super.delete();
 	}
 }

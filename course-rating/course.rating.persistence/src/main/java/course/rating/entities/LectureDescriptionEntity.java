@@ -1,17 +1,18 @@
 package course.rating.entities;
 
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.Lob;
+//import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 /**
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 /*
@@ -30,12 +31,14 @@ public class LectureDescriptionEntity extends AbstractEntity{
 	private long id;
 	
 	@NotNull
+	@Column(columnDefinition="clob")
+	@Lob
 	private String textDescription;
 	
 	//private Object videoDescription;
 	
-	@OneToOne(mappedBy= "descriptionEntity", cascade= CascadeType.ALL)
-	private LectureEntity lectureEntity;
+	//@OneToOne(mappedBy= "descriptionEntity")
+	//private LectureEntity lectureEntity;
 	
 	public LectureDescriptionEntity(){
 	}
@@ -56,6 +59,7 @@ public class LectureDescriptionEntity extends AbstractEntity{
 		this.textDescription  = description;
 	}
 	
+	/*
 	public LectureEntity getLectureEntity(){
 		return this.lectureEntity;
 	}
@@ -64,7 +68,7 @@ public class LectureDescriptionEntity extends AbstractEntity{
 		this.lectureEntity = entity;
 	}
 	
-	/*
+	
 	public Object getVideoDescription(){
 		return videoDescription;
 	}
@@ -75,14 +79,14 @@ public class LectureDescriptionEntity extends AbstractEntity{
 	*/
 	
 	public String toString(){
-		return this.lectureEntity.getName() + "\n Description:\n" + this.textDescription;
+		return " Description:\n" + this.textDescription;
 	}
 	
 	public boolean equals(Object obj){
 		boolean result = false;
 		if(obj instanceof LectureDescriptionEntity){
 			LectureDescriptionEntity desc = (LectureDescriptionEntity)obj;
-			result = this.lectureEntity.equals(desc.getLectureEntity()) && this.textDescription.equals(desc.getTextDescription());
+			result = this.textDescription.equals(desc.getTextDescription());
 		}
 		return result;
 	}

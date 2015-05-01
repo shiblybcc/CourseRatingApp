@@ -1,8 +1,6 @@
 package course.rating.util;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
-
 import course.rating.dao.GlobalDao;
 import course.rating.domain.impl.CommentImpl;
 import course.rating.domain.impl.CommentStatisticsImpl;
@@ -26,21 +24,22 @@ import course.rating.entities.SubCommentEntity;
 /**
  * A small service for mapping entities to correspond domain objects.
  * 
- * @author TODO...
+ * @author CR Team
  */
 @Stateless
 public class DomainObjectFactory {
 
-	@EJB
 	private GlobalDao dao;
 	
-	public DomainObjectFactory(){
+	public DomainObjectFactory(GlobalDao dao){
+		this.dao = dao;
 	}
 	
 	public Lecture create(LectureEntity entity){
 		LectureImpl lecture = new LectureImpl(entity);
 		lecture.setFactory(this);
 		lecture.setStateManager(dao);
+		lecture.init();
 		return lecture;
 	}
 	

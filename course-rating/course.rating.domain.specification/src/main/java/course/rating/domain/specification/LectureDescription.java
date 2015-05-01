@@ -6,7 +6,7 @@ package course.rating.domain.specification;
  * Support for the other types(audio, video) depends on 
  * a concrete implementation.
  *  
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface LectureDescription extends Resource{
@@ -20,7 +20,7 @@ public interface LectureDescription extends Resource{
 	 * Checks whether the parameter is a valid description.
 	 * 
 	 * @param description   a text
-	 * @return              true iff description is valide
+	 * @return              true iff description is valid
 	 */
 	public boolean canSetTextDescription(String description);
 	

@@ -6,7 +6,7 @@ import java.util.List;
  * A lecture can be commented. This interface provides
  * the API offered by comment objects.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface Comment extends BaseComment{
@@ -37,7 +37,7 @@ public interface Comment extends BaseComment{
 	 * comment.
 	 * 
 	 * @param subComment  a sub comment
-	 * @return            true iff 
+	 * @return            true iff the paramater can be added
 	 */
 	public boolean canAddSubComment(SubComment subComment);
 	

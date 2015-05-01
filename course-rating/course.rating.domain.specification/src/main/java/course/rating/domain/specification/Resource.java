@@ -3,12 +3,14 @@ package course.rating.domain.specification;
 import java.io.Serializable;
 
 /**
- * A resource can be saved.
+ * The functionalities supported by a resource.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface Resource extends Serializable{
 
 	public void save();
+	
+	public void delete();
 }

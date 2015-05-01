@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import javax.ejb.EJB;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 
@@ -22,24 +21,34 @@ import course.rating.util.EntityBuilder;
 /**
  * Default implementation of {@link PersistenceFacade}
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
-//TODO save state of object....
 @Local(PersistenceFacade.class)
 @Stateless
 public class PersistenceFacadeImpl implements PersistenceFacade{
 
-	@EJB
 	private DomainObjectFactory domainFactory;
-	@EJB
 	private EntityBuilder entityBuilder;
-	@EJB
 	private GlobalDao dao;
 	
 	public PersistenceFacadeImpl(){
+		dao = new GlobalDao();
+		entityBuilder = new EntityBuilder();
+		domainFactory = new DomainObjectFactory(dao);
 	}
 
+	/**
+	 * Only for test purpose...
+	 */
+	public GlobalDao notToUseGetDao(){
+		return this.dao;
+	}
+	
+	public Lecture newLecture(){
+		return domainFactory.create(entityBuilder.createLectureEntity());
+	}
+	
 	public List<Lecture> getAllLectures() {
 		List<Lecture> resultList = Lists.newArrayList();
 		List<LectureEntity> list = dao.getAllLectureEntities();
@@ -65,24 +74,38 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 		return Collections.emptyList();
 	}
 	
+	public void deleteLectureWithName(String name){
+		Optional<Lecture> opt = getLecture(name);
+		if(opt.isPresent()){
+			opt.get().delete();
+		}else{
+			//TODO logging...
+		}
+	}
+	public Comment newComment(){
+		return domainFactory.create(entityBuilder.createCommentEntity());
+	}
+	
+	public SubComment newSubComment(){
+		return domainFactory.create(entityBuilder.createSubCommentEntity());
+	}
+	
 	public void addComment(String lectureName, String title, String content) {
 		Optional<Lecture> optionalLecture = getLecture(lectureName);
 		Lecture lecture;
-		
 		if(optionalLecture.isPresent()){//lecture with the given name is know...
 			lecture = optionalLecture.get();
 			if(lecture.hasCommentWithTitle(title)){
 				Comment comment = lecture.getCommentWithTitle(title);
-				SubComment subComment = domainFactory.create(entityBuilder.createSubCommentEntity());
+				SubComment subComment = newSubComment();
+				subComment.setContent(content);
 				comment.addSubComment(subComment);
-				subComment.setContent(content)
-				.save(); // rely on the cascade mechanism...
- 				//lecture.save();
+				lecture.save(); //TODO better to call save on the comment object
 			}else{
-				Comment comment = domainFactory.create(entityBuilder.createCommentEntity());
-				comment.setTitle(title).setContent(content)
-				.save(); // rely on the cascade mechanism...
-				//lecture.save();
+				Comment comment = newComment();
+				comment.setTitle(title).setContent(content);
+				lecture.addComment(comment);
+				lecture.save();
 			}
 		}else{
 			//New lecture

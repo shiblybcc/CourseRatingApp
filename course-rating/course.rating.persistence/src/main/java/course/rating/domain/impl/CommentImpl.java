@@ -14,7 +14,7 @@ import course.rating.entities.SubCommentEntity;
 /**
  * Default implementation of {@link Comment}.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public class CommentImpl extends AbstractComment<CommentEntity> implements Comment{
@@ -54,7 +54,7 @@ public class CommentImpl extends AbstractComment<CommentEntity> implements Comme
 	public Comment addSubComment(SubComment subComment) {
 		if(canAddSubComment(subComment)){
 			SubCommentImpl sc = (SubCommentImpl)subComment;
-			((SubCommentEntity)sc.getState()).setCommentEntity((CommentEntity)getState());
+			//((SubCommentEntity)sc.getState()).setCommentEntity((CommentEntity)getState());
 			((CommentEntity)getState()).getSubCommentEntitys().add((SubCommentEntity)sc.getState());
 		}else{
 			//TODO logging...
@@ -63,9 +63,17 @@ public class CommentImpl extends AbstractComment<CommentEntity> implements Comme
 	}
 	
 	public void save(){
-		super.save();
 		for(SubComment subComment : getAllSubComments()){
 			subComment.save();
 		}
+		super.save();
+	}
+	
+	public void delete(){
+		this.getStatistics().delete();
+		for(SubComment sc : getAllSubComments()){
+			sc.delete();
+		}
+		super.delete();
 	}
 }

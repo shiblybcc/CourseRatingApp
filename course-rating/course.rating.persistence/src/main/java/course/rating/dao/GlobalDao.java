@@ -19,7 +19,7 @@ import course.rating.util.StringUtil;
 /**
  * DAO for retrieving entities form the DB.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 @Stateless
@@ -31,6 +31,10 @@ public class GlobalDao implements StateManager {
 	public GlobalDao() {
 	}
 
+	public void setManager(EntityManager mgr){
+		this.manager = mgr;
+	}
+	
 	public boolean save(AbstractEntity state) {
 		boolean result = false;
 		try {

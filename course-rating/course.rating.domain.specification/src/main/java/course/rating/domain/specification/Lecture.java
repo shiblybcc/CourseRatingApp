@@ -6,7 +6,7 @@ import java.util.List;
  * This interface defines the services offered by 
  * a lecture.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface Lecture extends Resource{

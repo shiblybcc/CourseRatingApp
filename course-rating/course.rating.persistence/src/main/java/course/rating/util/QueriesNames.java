@@ -4,7 +4,7 @@ package course.rating.util;
  * Defines the names of all queries used to retrieve
  * the date from the DB.
  * 
- * @author TODO...
+ * @author CR Team
  *
  */
 public interface QueriesNames {
