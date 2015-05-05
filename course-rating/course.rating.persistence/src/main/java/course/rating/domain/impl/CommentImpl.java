@@ -54,7 +54,7 @@ public class CommentImpl extends AbstractComment<CommentEntity> implements Comme
 	public Comment addSubComment(SubComment subComment) {
 		if(canAddSubComment(subComment)){
 			SubCommentImpl sc = (SubCommentImpl)subComment;
-			//((SubCommentEntity)sc.getState()).setCommentEntity((CommentEntity)getState());
+			((SubCommentEntity)sc.getState()).setCommentEntity((CommentEntity)getState());
 			((CommentEntity)getState()).getSubCommentEntitys().add((SubCommentEntity)sc.getState());
 		}else{
 			//TODO logging...

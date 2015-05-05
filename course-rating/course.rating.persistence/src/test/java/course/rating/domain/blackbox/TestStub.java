@@ -53,6 +53,9 @@ public class TestStub {
 	 */
 	public static final String COMMENT_CONTENT = "A Dummy content...";
 	public static final String COMMENT_CONTENT_1 = "Another dummy content...";
+	public static final String COMMENT_CONTENT_2 = "Another dummy content...";
+	public static final String COMMENT_CONTENT_3 = "Another content...";
+	
 	
 	public static PersistenceFacade getFacade(){
 		if(facade == null){

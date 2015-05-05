@@ -2,7 +2,7 @@ package course.rating.util;
 
 /**
  * Defines the names of all queries used to retrieve
- * the date from the DB.
+ * the data from the DB.
  * 
  * @author CR Team
  *

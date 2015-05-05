@@ -35,7 +35,8 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 	public PersistenceFacadeImpl(){
 		dao = new GlobalDao();
 		entityBuilder = new EntityBuilder();
-		domainFactory = new DomainObjectFactory(dao);
+		domainFactory = new DomainObjectFactory();
+		domainFactory.setGlobalDao(dao);
 	}
 
 	/**

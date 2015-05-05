@@ -31,10 +31,12 @@ public class DomainObjectFactory {
 
 	private GlobalDao dao;
 	
-	public DomainObjectFactory(GlobalDao dao){
-		this.dao = dao;
+	public DomainObjectFactory(){
 	}
 	
+	public void setGlobalDao(GlobalDao dao){
+		this.dao = dao;
+	}
 	public Lecture create(LectureEntity entity){
 		LectureImpl lecture = new LectureImpl(entity);
 		lecture.setFactory(this);

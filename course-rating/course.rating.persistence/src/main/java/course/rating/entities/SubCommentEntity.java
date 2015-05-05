@@ -2,7 +2,7 @@ package course.rating.entities;
 
 
 import javax.persistence.Entity;
-//import javax.persistence.ManyToOne;
+import javax.persistence.ManyToOne;
 
 
 /**
@@ -14,14 +14,14 @@ import javax.persistence.Entity;
 public class SubCommentEntity extends BasicCommentEntity{
 	
 	private static final long serialVersionUID = 55467L;
-	//@ManyToOne
-	//private CommentEntity commentEntity;
+	
+	@ManyToOne
+	private CommentEntity commentEntity;
 	
 
 	public SubCommentEntity(){
 	}
 	
-	/*
 	public CommentEntity getCommentEntity(){
 		return commentEntity;
 	}
@@ -29,5 +29,4 @@ public class SubCommentEntity extends BasicCommentEntity{
 	public void setCommentEntity(CommentEntity entity){
 		this.commentEntity = entity;
 	}
-	*/
 }

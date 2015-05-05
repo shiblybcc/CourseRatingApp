@@ -49,7 +49,7 @@ public class LectureEntity extends AbstractEntity{
 	@OneToOne(cascade= CascadeType.ALL)
 	private LectureStatisticsEntity statisticsEntity;
 	
-	@OneToMany(fetch=FetchType.EAGER)  //mappedBy ="lectureEntity",
+	@OneToMany(fetch=FetchType.EAGER,mappedBy ="lectureEntity")
 	private Set<CommentEntity> commentEntitys;
 	
 	public LectureEntity(){

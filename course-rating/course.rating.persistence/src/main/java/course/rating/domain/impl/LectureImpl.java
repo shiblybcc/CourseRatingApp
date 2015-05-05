@@ -65,7 +65,7 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements
 		if (canAddComment(comment) && (comment instanceof CommentImpl)) {
 			CommentImpl c = (CommentImpl) comment;
 			titleToComment.put(comment.getTitle(), c);
-			// ((CommentEntity)c.getState()).setLectureEntity(getState());
+			 ((CommentEntity)c.getState()).setLectureEntity(getState());
 			this.getState().getCommentEntitys()
 					.add((CommentEntity) c.getState());
 		} else {
@@ -124,7 +124,6 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements
 			comment.save();
 		}
 		saveState();
-
 	}
 
 	public void delete() {
