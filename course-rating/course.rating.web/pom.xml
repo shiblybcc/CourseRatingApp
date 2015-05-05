@@ -1,41 +1,47 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>l2p.app.development</groupId>
-    <artifactId>course.rating</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>course.rating.web</artifactId>
-  <packaging>war</packaging>
-  <name>course.rating.web Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-   <dependency>
-        <groupId>javax.faces</groupId>
-        <artifactId>jsf-api</artifactId>
-        <version>2.0</version>
-        <scope>provided</scope>
-    </dependency>
-        <dependency>
-        <groupId>com.sun.faces</groupId>
-        <artifactId>jsf-api</artifactId>
-        <version>2.0.2</version>
-        <scope>runtime</scope>
-    </dependency>
-    <dependency>
-        <groupId>com.sun.faces</groupId>
-        <artifactId>jsf-impl</artifactId>
-        <version>2.0.2</version>
-        <scope>runtime</scope>
-    </dependency> 
-  </dependencies>
-  <build>
-    <finalName>course.rating.web</finalName>
-  </build>
-  <properties>
-  	<m2e.jaxrs.activation>false</m2e.jaxrs.activation>
-  	<m2e.jsf.activation>false</m2e.jsf.activation>
-  </properties>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>l2p.app.development</groupId>
+		<artifactId>course.rating</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>course.rating.web</artifactId>
+	<packaging>war</packaging>
+	<name>course.rating.web Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>l2p.app.development</groupId>
+			<artifactId>course.rating.domain.specification</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-api</artifactId>
+			<version>2.0.2</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.faces</groupId>
+			<artifactId>jsf-impl</artifactId>
+			<version>2.0.2</version>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>course.rating.web</finalName>
+	</build>
+	<properties>
+		<m2e.jaxrs.activation>false</m2e.jaxrs.activation>
+		<m2e.jsf.activation>false</m2e.jsf.activation>
+	</properties>
 </project>
