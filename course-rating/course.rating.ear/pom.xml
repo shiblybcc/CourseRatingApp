@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>l2p.app.development</groupId>
+		<artifactId>course.rating</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>course.rating.ear</artifactId>
+	<name>The EAR module</name>
+	<description>This module bundles the others to ease the deployment onto the server</description>
+	<packaging>ear</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>l2p.app.development</groupId>
+			<artifactId>course.rating.web</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>l2p.app.development</groupId>
+			<artifactId>course.rating.persistence</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<version>2.10</version>
+				<configuration>
+					<modules>
+						<webModule>
+							<groupId>l2p.app.development</groupId>
+							<artifactId>course.rating.web</artifactId>
+							<contextRoot>/course.rating.web</contextRoot><!--  TODO change this context root--> 
+						</webModule>
+						<ejbModule>
+							<groupId>l2p.app.development</groupId>
+							<artifactId>course.rating.persistence</artifactId>
+						</ejbModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

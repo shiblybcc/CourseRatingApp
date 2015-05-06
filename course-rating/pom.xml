@@ -11,10 +11,8 @@
 	<modules>
 		<module>course.rating.domain.specification</module>
 		<module>course.rating.persistence</module>
-
-
-
-		<module></module>
+		<module>course.rating.web</module>
+		<module>course.rating.ear</module>
 	</modules>
 	<dependencies>
 		<dependency>

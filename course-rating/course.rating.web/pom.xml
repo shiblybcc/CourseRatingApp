@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>course.rating.web</artifactId>
 	<packaging>war</packaging>
-	<name>course.rating.web Maven Webapp</name>
+	<name>Web</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
