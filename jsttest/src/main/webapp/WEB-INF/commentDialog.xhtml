@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<p:dialog header="Give a comment" widgetVar="cmtDialog" draggable="true" resizable="true">
+		<h:form>
+		  <p:panelGrid columns="2" cellPadding="10">
+		    <h:outputLabel value="Lecture name:" />
+		    <h:selectOneMenu value="#{commentBean.lectureName}">
+			  <f:selectItems value="#{commentBean.labelToName}"/>
+		    </h:selectOneMenu>
+		    
+		    <h:outputLabel value="Title:" />
+		    <p:autoComplete value="#{commenetBean.commentTitle}" completeMethod="#{commentBean.getCommentTitles}"/>
+		    
+		    <h:outputLabel value="Content:" />
+		    <h:inputTextarea col="50" row="50" value="#{commentBean.content}"/>
+		  </p:panelGrid>
+		  <hr/>
+		  <h:commandButton value="Ok" actionListener="#{commentBean.addComment}"/>
+		  <h:commandButton value="Cancel" onclick="PF('cmtDialog').hide();"/>
+		</h:form>
+	</p:dialog>
+</ui:composition>

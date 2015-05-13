@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="styles.css" />
+	<title>RWTH Course Rating</title>
+</h:head>
+<h:body>
+	<div id="header_id" class="header">
+		<h:form>
+			<h:commandLink action="index">
+				<h:graphicImage id="logo_id" alt="Our Logo" styleClass="logo"
+				    name="logo.png" library="images" />
+				<!-- TODO logo.png is just an example... -->
+			</h:commandLink>
+			<h:inputText id="search_bar_id" value="#{mainBean.searchQuery}"
+				styleClass="search_bar" />
+			<h:commandButton id="search_btn_id" value="Search"
+				styleClass="button" action="#{mainBean.search}" />
+			<h:commandButton id="rate_btn_id" value="Rate" styleClass="button"
+				action="#{ratingBean.showDialog}" />
+			<h:commandButton id="comment_btn_id" value="Comment"
+				styleClass="button" action="#{commentBean.showDialog}" />
+		</h:form>
+		<ui:include src="/WEB-INF/commentDialog.xhtml"/>
+		<ui:include src="/WEB-INF/ratingDialog.xhtml"/>
+	</div>
+	<hr />
+	<div id="content_id" class="content">
+		<ui:insert name="content_panel"> The main content of the view</ui:insert>
+	</div>
+	<hr/>
+	<div id="bottom_id" class="bottom">
+	  <h:commandLink value="README" action="readme"/>
+	</div>
+</h:body>
+</html>
