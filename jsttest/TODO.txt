@@ -1,0 +1,4 @@
+- Where to store resources in this projects (css and images file)
+- Define css classes: header, content, bottom, button, logo
+- find icons for rate and comment buttons
+- attach icons to the buttons

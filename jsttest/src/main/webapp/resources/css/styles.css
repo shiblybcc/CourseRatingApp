@@ -1,0 +1,16 @@
+body{
+	margin-left:auto;
+	margin-right:auto;
+	width:70%;
+}
+.button{
+	width:13%;
+	max-width:13%;
+}
+
+.search_bar{
+	width: 30%;
+}
+.sign{
+	width: 3%;
+}

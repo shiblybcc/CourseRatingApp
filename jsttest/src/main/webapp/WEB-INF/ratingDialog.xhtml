@@ -3,30 +3,26 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
-	<p:dialog header="Rate a lecture" widgetVar="rtDialog">
+	<p:dialog header="Rate a lecture" widgetVar="rtDialog" draggable="true" resizable="false" modal="true" dynamic="true">
 		<h:form>
-			<p:panelGrid columns="2" cellPadding="10">
-				<h:outputLabel value="Lecture name:" />
-				<h:selectOneMenu value="#{ratingBean.lectureName}">
-					<f:selectItems value="#{ratingBean.labelToName}" />
-				</h:selectOneMenu>
-			</p:panelGrid>
-			<h:dataTable cellspacing="10" var="category" value="#{ratingBean.categoryNames}">
+			  <h:outputLabel value="Lecture name:" />
+		      <h:selectOneMenu value="#{ratingBean.lectureName}">
+			   <f:selectItems value="#{ratingBean.getLabelToName()}" />
+			  </h:selectOneMenu>
+			 
+			<h:dataTable cellspacing="10" var="category" value="#{ratingBean.getCategoryNames()}">  
               <h:column>
-                <h:outputLabel value="#{category}" />
+                <h:outputLabel value="#{category}:" />
               </h:column>
               <h:column>
-                <h:selectOneMenu value="#{ratingBean.}">
-                  
+                <h:selectOneMenu value="#{ratingBean.categoryNameToValue[category]}">
+                  <f:selectItems value="#{ratingBean.valueNameToWeight}"/>
                 </h:selectOneMenu>
               </h:column>
-
 			</h:dataTable>
-
-			<hr />
-			<h:commandButton value="Ok"
-				actionListener="#{ratingBean.updateLectureRating}" />
-			<h:commandButton value="Cancel" onclick="PF('rtDialog').hide();" />
+			<hr/>
+			<p:commandButton value="Ok" actionListener="#{ratingBean.updateLectureRating()}" />
+			<p:commandButton value="Cancel" onclick="PF('rtDialog').hide();" />
 		</h:form>
 	</p:dialog>
 </ui:composition>

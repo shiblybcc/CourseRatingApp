@@ -1,12 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>l2p.app.development</groupId>
-	<artifactId>jsttest</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>jsttest Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+	<name>Course Rating Web</name>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -45,20 +41,43 @@
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
 			<version>1.1</version>
+		</dependency>  
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+		<dependency>
+			<groupId>l2p.app.development</groupId>
+			<artifactId>course.rating.domain.specification</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>l2p.app.development</groupId>
+			<artifactId>course.rating.persistence</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>ejb</type>
 		</dependency>
 	</dependencies>
 	<build>
 		<finalName>jsttest</finalName>
-		<plugins>
+		<!--  <plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.1</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
-		</plugins>
+		</plugins>-->
 	</build>
+	<parent>
+		<groupId>l2p.app.development</groupId>
+		<artifactId>course.rating.parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>course.rating.web</artifactId>
+	<description>The web part of the rating application</description>
 </project>

@@ -3,23 +3,24 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
-	<p:dialog header="Give a comment" widgetVar="cmtDialog" draggable="true" resizable="true">
+	<p:dialog header="Give a comment" widgetVar="cmtDialog" draggable="true" resizable="false" modal="true" dynamic="true">
 		<h:form>
 		  <p:panelGrid columns="2" cellPadding="10">
 		    <h:outputLabel value="Lecture name:" />
 		    <h:selectOneMenu value="#{commentBean.lectureName}">
-			  <f:selectItems value="#{commentBean.labelToName}"/>
+			  <f:selectItems value="#{commentBean.getLabelToName()}"/>
 		    </h:selectOneMenu>
 		    
 		    <h:outputLabel value="Title:" />
-		    <p:autoComplete value="#{commenetBean.commentTitle}" completeMethod="#{commentBean.getCommentTitles}"/>
+		    <p:autoComplete value="#{commentBean.commentTitle}" completeMethod="#{commentBean.getProposals()}"/>
 		    
 		    <h:outputLabel value="Content:" />
-		    <h:inputTextarea col="50" row="50" value="#{commentBean.content}"/>
+		    <h:inputTextarea value="#{commentBean.content}"/>
 		  </p:panelGrid>
+		  <p:messages id="cdmgs" showDetail="true"/>
 		  <hr/>
-		  <h:commandButton value="Ok" actionListener="#{commentBean.addComment}"/>
-		  <h:commandButton value="Cancel" onclick="PF('cmtDialog').hide();"/>
+		  <p:commandButton value="Ok" action="#{commentBean.addComment()}" update="cdmgs"/>
+		  <p:commandButton value="Cancel" onclick="PF('cmtDialog').hide();"/>
 		</h:form>
 	</p:dialog>
 </ui:composition>
