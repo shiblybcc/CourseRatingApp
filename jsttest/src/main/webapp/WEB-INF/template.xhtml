@@ -20,6 +20,7 @@
 	<title>Course Rating</title>
 </h:head>
 <h:body>
+
 <script>
 	function handleRedirection(xhr,status,args){
 		if(status == 'success'){
@@ -37,7 +38,7 @@
     function handleAuthenticationStatus(xhr, status,args){
     	if(status == 'success'){
     		if(args.isUserAuthenticated){
-    			$('#sign-in').hide();
+    			$('#sign-in').show();
     			$('#sign-out').show();
     		}
     	}
@@ -45,7 +46,7 @@
     function handleSignOut(xhr, status,args){
     	if(status == 'success'){
     		$('#sign-in').show();
-    		$('#sign-out').hide();
+    		$('#sign-out').show();
     	}
     }
 </script>
@@ -58,7 +59,7 @@
 			
 	<h:form id="form_id">
 	   <h:commandLink action="index">
-			<h:graphicImage id="logo_id" alt="Our Logo" styleClass="logo"
+			<h:graphicImage id="logo_id" alt="Our Logo" styleClass="our-logo"
 				name="logo.png" library="images" />
 		</h:commandLink>
 		

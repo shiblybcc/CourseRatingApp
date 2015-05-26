@@ -178,6 +178,11 @@ a{
 	margin-bottom: 15px;
 }
 
-#sign-out{
-	visibility: hidden;
+
+.custom-dialog{
+	z-index: 1050 !important;
+}
+
+.custom-dialog-control{
+
 }
