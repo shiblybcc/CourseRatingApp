@@ -31,6 +31,10 @@ public abstract class AbstractBean implements Serializable{
 	protected L2pAccess getL2pAccessService() {
 		L2pAccess service = (L2pAccess) FacesContext.getCurrentInstance()
 				.getExternalContext().getSessionMap().get(Constants.L2P_ACCESS);
+		if(!service.isInitialized()){
+			String id = (String)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(Constants.CLIENT_ID_PROP);
+			service.init(id);
+		}
 		return service;
 	}
 	

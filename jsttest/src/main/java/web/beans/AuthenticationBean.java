@@ -27,10 +27,7 @@ public class AuthenticationBean extends AbstractBean {
 	private static final long serialVersionUID = 9389373L;
 
 	private boolean canRedirectToAuthenticationURL() {
-		Boolean isAuthenticated = (Boolean) FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap()
-				.get(Constants.IS_AUTHENTICATED);
-		return !isAuthenticated;
+		return !isAuthenticated();
 	}
 
 	public void getAuthenticationURL() {
@@ -62,6 +59,10 @@ public class AuthenticationBean extends AbstractBean {
 				public void tokensAvailable() {
 					doRetrieveLectureNames(l2pAccess);
 				}
+				@Override
+				public void tokensNotAvailable() {
+					sendAuthenticationStatusToClient(false);
+				}
 			});
 			l2pAccess.retrieveTokens();
 		} catch (Exception e) {
@@ -78,13 +79,25 @@ public class AuthenticationBean extends AbstractBean {
 				map.put(Constants.IS_AUTHENTICATED, true);
 				map.put(Constants.LECTURE_NAME_TO_DESCRIPTION, nameToDescription);
 			}
+			sendAuthenticationStatusToClient(true);
 			showInfo("Authentication Successful", "You have been successfully authenticated");
+			
 		} catch (Exception e) {
+			sendAuthenticationStatusToClient(false);
 			showError("Authentication Error E003","An internal error occured...");
 		}
 	}
 
+	private void sendAuthenticationStatusToClient(boolean isAuthenticationSuccessful){
+		if(isAuthenticationSuccessful){
+			RequestContext.getCurrentInstance().addCallbackParam("isUserAuthenticated", true);
+		}else{
+			RequestContext.getCurrentInstance().addCallbackParam("isUserAuthenticated", false);
+		}
+	}
+	
 	public void signOut(){
+		System.out.println("About to sign out...");
 		if(!isAuthenticated()){
 			return;
 		}

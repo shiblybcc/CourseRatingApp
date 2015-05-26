@@ -32,12 +32,21 @@ public abstract class OAuthHelper implements Serializable{
 
 	private static final long serialVersionUID = 99484340L;
 
+	/**
+	 * Max number of pool request to the token end point
+	 */
+	private static final int MAX_POOL_REQUEST = 4;
 
 	public interface TokenListener extends Serializable{
 		/**
 		 * Notify  listeners that the access and refresh tokens are available
 		 */
 	   public void tokensAvailable();	
+	   
+	   /**
+	    * Notify listeners that the access and refresh tokens could not be retrieve
+	    */
+	   public void tokensNotAvailable();
 	}
 	
 	private String CLIENT_ID ;
@@ -54,11 +63,17 @@ public abstract class OAuthHelper implements Serializable{
 		listeners = Sets.newHashSet();
 	}
 
+	/*
+	 * Needed for serialization
+	 */
 	private void writeObject(java.io.ObjectOutputStream stream) throws IOException{
 		stream.defaultWriteObject();
 		restClient.close();
 		parser = null;
 	}
+	/*
+	 * Needed for de-serialization
+	 */
 	private void readObject(java.io.ObjectInputStream stream) throws IOException, ClassNotFoundException{
 		stream.defaultReadObject();
 		restClient = ClientBuilder.newClient();
@@ -81,7 +96,7 @@ public abstract class OAuthHelper implements Serializable{
 		return this.state == State.HAS_TOKENS;
 	}
 
-	protected boolean isInitialized(){
+	public boolean isInitialized(){
 		return CLIENT_ID != null && parser != null && restClient != null;
 	}
 	
@@ -99,9 +114,14 @@ public abstract class OAuthHelper implements Serializable{
 		listeners.clear();
 	}
 	
-	private void notifyTokenListeners(){
+	private void notifyTokenListenersAboutSuccess(){
 		for(TokenListener listener : listeners){
 			listener.tokensAvailable();
+		}
+	}
+	private void notifyTokenListenersAboutFailure(){
+		for(TokenListener listener : listeners){
+			listener.tokensNotAvailable();
 		}
 	}
 	
@@ -119,7 +139,7 @@ public abstract class OAuthHelper implements Serializable{
 		result.setIsSuccessful(true);
 		try {
 			if (isStartingState()) {
-				result = doAuthenticate();
+				result = getRedirectionURL();
 			}else if(!hasTokens()){
 				result.setIsSuccessful(false);
 				result.setException(new IllegalStateException(this.getClass().getSimpleName() + " is in a illegal state..."));
@@ -135,7 +155,7 @@ public abstract class OAuthHelper implements Serializable{
 	 * Authenticates the user
 	 * Returns the URL to redirect the user.
 	 */
-	private AuthenticationResult doAuthenticate()  throws Exception{
+	private AuthenticationResult getRedirectionURL()  throws Exception{
 		AuthenticationResult result = new AuthenticationResult();
 		userCodeObj = retrieveUserCode();
 		String query = OAuthConstants.QUERY_PREFIX + (String)userCodeObj.get(OAuthConstants.USER_CODE_NAME);
@@ -162,22 +182,23 @@ public abstract class OAuthHelper implements Serializable{
 	}
 	
 	/*
-	 * We attempt to retrieve the tokens at most 100 times.
+	 * We attempt to retrieve the tokens.
 	 */
 	public void retrieveTokens() throws Exception{
 		Long interval = (Long)userCodeObj.get(OAuthConstants.INTERVAL_NAME);
 		String deviceCode = (String)userCodeObj.get(OAuthConstants.DEVICE_CODE_NAME);
-		int limit = 100;
 		int i = 0;
 		boolean shouldContinue = true;
 		while(shouldContinue){
 			i++;
 			Thread.sleep(interval * 1000);
 			shouldContinue = !doRetrieveTokens(deviceCode);
-			shouldContinue &= i < limit;
+			shouldContinue &= i < MAX_POOL_REQUEST;
 		}
 		if(tokensAvailable()){
-			notifyTokenListeners();
+			notifyTokenListenersAboutSuccess();
+		}else{
+			notifyTokenListenersAboutFailure();
 		}
 	}
 	
@@ -245,6 +266,8 @@ public abstract class OAuthHelper implements Serializable{
 			Form form = new Form();
 			form.param(OAuthConstants.CLIENT_ID_NAME, CLIENT_ID).param(OAuthConstants.REFRESH_TOKEN_NAME, refreshToken).param(OAuthConstants.GRAND_TYPE_NAME, OAuthConstants.GRAND_TYPE_INVALIDATE);
 			restClient.target(OAuthConstants.TOKENS_END_POINT).request().post(Entity.entity(form, MediaType.APPLICATION_FORM_URLENCODED_TYPE));
+			accessToken = null;
+			refreshToken = null;
 		}catch(Exception e){
 			//TODO logging...
 		}

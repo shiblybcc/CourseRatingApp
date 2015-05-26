@@ -1,8 +1,126 @@
-<ui:composition template="/WEB-INF/template.xhtml"
-   xmlns="http://www.w3.org/1999/xhtml"
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:f="http://java.sun.com/jsf/core">
-	TODO define content of page which shows all information about a given lecture.That is, comments,subcomments, statistics...
-</ui:composition>
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:body>
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="content">
+			<h2 class="sub-header">Course Name</h2>
+			<div class="table-responsive">
+				<hr></hr>
+				<div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">Comment</a></li>
+						<li><a href="#tabs-2">Rating</a></li>
+						<li><a href="#tabs-3">Course Info</a></li>
+					</ul>
+					<div id="tabs-1">
+						<table class="table">
+							<tbody>
+								<c:forEach varStatus="vrs" begin="1" end="10">
+									<tr>
+										<td style="width: 15%">
+											<div id="up-value">27</div> <h:commandButton
+												action="#{some_action}" styleClass="up-button" /> <h:commandButton
+												action="#{some_action}" styleClass="down-button" />
+											<div id="down-value">13</div>
+										</td>
+										<td>
+											<div class="comment-title">Comment title will go here</div>
+											<div>Sets the width and height of the background image
+												in percent of the parent element. The first value sets the
+												width, the second value sets the height. If only one value
+												is given, the second is set to "auto"</div>
+											<div style="float: left; width: 100%;">
+												<a class="btn comment-expand comment-link">More </a> <a
+													class="btn reply-comment comment-link">Reply </a>
+												<div class="content-bottom comment-link">created on
+													12.12.2015</div>
+												<div class="comment-collapse hide">
+													<div class="well">
+														<table class="table table-striped">
+															<tbody>
+																<tr>
+																	<td><b>Reply by others</b></td>
+																</tr>
+																<c:forEach begin="1" end="10">
+																	<tr>
+																		<td>Sets the width and height of the background
+																			image in percent of the parent element. The first
+																			value sets the width, the second value sets the
+																			height. If only one value is given, the second is set
+																			to
+																			<div class="content-bottom">not necessary
+																				12.12.2015</div>
+																		</td>
+																	</tr>
+																</c:forEach>
+															</tbody>
+														</table>
+													</div>
+												</div>
+												<div class="comment-area-collapse hide" style="Width: 100%">
+													<h:form>
+														<h:inputTextarea class="form-control" cols="30" rows="5"
+															value="Comment" />
+														<h:commandButton class="btn comment-submit" value="submit"
+															type="submit" action="#" />
+													</h:form>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<div id="tabs-2">
+						<table>
+							<tbody>
+								<c:forEach varStatus="vs" begin="1" end="5">
+									<tr>
+										<td>Category Name</td>
+										<td><div id="jRate_#{vs.index}"></div></td>
+										<td><span id="jRate_value_#{vs.index}">1</span> by 35
+											students</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<div id="tabs-3">
+						<div>
+							<div class="well">
+								<pre>
+Practical Lab: L²P App Development
+Dr. rer. nat. Mohamed Amine Chatti, Universitätsprofessor Dr.-Ing. Ulrik Schroeder, Vlatko Lukarov M. Sc. RWTH
+Lehr- und Forschungsgebiet Informatik 9 (Lerntechnologien)
+CAMPUS Course Description
+Description
+Cf. website.
+Additional Information
+
+    SWS: 4
+    ECTS Credits: 7
+    Language: Englisch
+    Links: http://learntech.rwth-aachen.de/SS_2015_Lab
+
+Prerequisites
+Knowledge in eLearning, and web/mobile technologies is recommended.
+Exams
+Master: Daten und Informationsmanagement
+									</pre>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

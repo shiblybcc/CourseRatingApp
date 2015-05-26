@@ -43,6 +43,7 @@ public class SessionListener implements HttpSessionListener{
 		String clientId = getClientID(ev.getSession().getServletContext());
 		L2pAccess l2pAc = new L2pAccess();
 		l2pAc.init(clientId);
+		ev.getSession().setAttribute(Constants.CLIENT_ID_PROP, clientId);
 		ev.getSession().setAttribute(Constants.L2P_ACCESS, l2pAc);
 		ev.getSession().setAttribute(Constants.IS_AUTHENTICATED, false);
 	}
