@@ -1,5 +1,9 @@
 package course.rating.util;
 
+import java.util.List;
+
+import com.google.common.collect.Lists;
+
 /**
  * Some string utilities.
  * 
@@ -14,5 +18,28 @@ public class StringUtil {
 		}else{
 		    return name.toLowerCase().replaceAll("\\s", "");
 		}
+	}
+	
+	/*
+	 * A simple search strategy which generates some queries from a
+	 * string.
+	 */
+	public static List<String> getPossibleSearchQueries(String name){
+		List<String> list = Lists.newArrayList();
+		if(name != null){
+			if(!name.isEmpty()){
+				list.addAll(doGetPossibleSearchQueries(name));
+			}
+		}
+		return list;
+	}
+
+	private static List< String> doGetPossibleSearchQueries(String name) {
+		List<String> tmp = Lists.newArrayList();
+		int length = name.length();
+		for(int i = 0; i < length ; i++) {
+			tmp.add(toLowerCaseWithoutWhiteSpaces(name.substring(0, length -i)));
+		}
+		return  tmp;
 	}
 }

@@ -13,11 +13,13 @@ import course.rating.entities.BasicCommentEntity;
  *
  * @param <T> can either be CommentEntity or SubCommentEntity
  */
-public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomainObject<BasicCommentEntity> implements BaseComment{
+public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomainObject<T> implements BaseComment{
 
 	private static final long serialVersionUID = 11223L;
 
-	protected AbstractComment(BasicCommentEntity state) {
+	private static final int MAX_CHARACTER_COUNT = 2000;
+	
+	protected AbstractComment(T state) {
 		super(state);
 	}
 
@@ -28,8 +30,8 @@ public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomai
 	public boolean canSetContent(String param){
 	   boolean result = false;
 	   if(param != null){
-		   param = param.replaceAll("\\s", "");
-		   result = !param.isEmpty();
+		   String tmp = param.replaceAll("\\s", "");
+		   result = !param.isEmpty() && !tmp.isEmpty() && param.length() < MAX_CHARACTER_COUNT;
 	   }
 	   return result;
 	}
@@ -46,26 +48,15 @@ public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomai
 	public Date getEditionDate() {
 		return this.getState().getDate();
 	}
-	
-	public boolean canSetEditionDate(Date date){
-		return date != null;
-	}
 
-	/*
-	public BaseComment setEditionDate(Date date) {
-		if(canSetEditionDate(date)){
-			this.getState().setDate(date);
-		}else{
-			//TODO log....
-		}
-		return this;
-	}
-	*/
-	
 	public CommentStatistics getStatistics() {
 		return factory.create(getState().getStatisticsEntity());
 	}
 	
+	public void save(){
+		getStatistics().save();
+		super.save();
+	}
 	public void delete(){
 		this.getStatistics().delete();
 		super.delete();

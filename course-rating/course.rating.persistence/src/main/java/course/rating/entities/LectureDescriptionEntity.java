@@ -11,14 +11,10 @@ import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 
 /**
+ * Note: Video based description are not supported for the moment.
  * 
  * @author CR Team
  *
- */
-/*
- * TODO support for video is disabled for now...
- * To manage a video, provide a link to i.e Youtube..
- * The link should be saved in the database...
  */
 @Entity
 public class LectureDescriptionEntity extends AbstractEntity{
@@ -31,14 +27,9 @@ public class LectureDescriptionEntity extends AbstractEntity{
 	private long id;
 	
 	@NotNull
-	@Column(columnDefinition="clob")
+	@Column(length=1000)
 	@Lob
 	private String textDescription;
-	
-	//private Object videoDescription;
-	
-	//@OneToOne(mappedBy= "descriptionEntity")
-	//private LectureEntity lectureEntity;
 	
 	public LectureDescriptionEntity(){
 	}
@@ -58,25 +49,6 @@ public class LectureDescriptionEntity extends AbstractEntity{
 	public void setTextDescription(String description){
 		this.textDescription  = description;
 	}
-	
-	/*
-	public LectureEntity getLectureEntity(){
-		return this.lectureEntity;
-	}
-	
-	public void setLectureEntity(LectureEntity entity){
-		this.lectureEntity = entity;
-	}
-	
-	
-	public Object getVideoDescription(){
-		return videoDescription;
-	}
-	
-	public void setVideoDescription(Object description){
-		this.videoDescription = description;
-	}
-	*/
 	
 	public String toString(){
 		return " Description:\n" + this.textDescription;

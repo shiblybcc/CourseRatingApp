@@ -1,6 +1,5 @@
 package course.rating.util;
 
-import javax.ejb.Stateless;
 import course.rating.dao.GlobalDao;
 import course.rating.domain.impl.CommentImpl;
 import course.rating.domain.impl.CommentStatisticsImpl;
@@ -26,7 +25,6 @@ import course.rating.entities.SubCommentEntity;
  * 
  * @author CR Team
  */
-@Stateless
 public class DomainObjectFactory {
 
 	private GlobalDao dao;

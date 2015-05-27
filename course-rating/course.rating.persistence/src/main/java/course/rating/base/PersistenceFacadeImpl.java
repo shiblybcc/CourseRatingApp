@@ -3,12 +3,14 @@ package course.rating.base;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import course.rating.dao.GlobalDao;
 import course.rating.domain.specification.Comment;
@@ -70,9 +72,14 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 		return Optional.fromNullable(lecture);
 	}
 
-	public List<Lecture> getAllLecturesMatching(String proposedLectureName){
-		//TODO implements me...
-		return Collections.emptyList();
+	public Set<Lecture> getAllMatchingLectures(String proposedLectureName){
+		Set<Lecture> result = Sets.newHashSet();
+		Set<LectureEntity> entities = dao.getAllMatchingLectures(proposedLectureName);
+		for(LectureEntity entity : entities){
+			entity.setIsNewEntity(false);
+			result.add(domainFactory.create(entity));
+		}
+		return result;
 	}
 	
 	public void deleteLectureWithName(String name){
@@ -91,7 +98,8 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 		return domainFactory.create(entityBuilder.createSubCommentEntity());
 	}
 	
-	public void addComment(String lectureName, String title, String content) {
+	public boolean addComment(String lectureName, String lectureDescription, String title, String content) {
+		boolean result = false;
 		Optional<Lecture> optionalLecture = getLecture(lectureName);
 		Lecture lecture;
 		if(optionalLecture.isPresent()){//lecture with the given name is know...
@@ -101,24 +109,53 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 				SubComment subComment = newSubComment();
 				subComment.setContent(content);
 				comment.addSubComment(subComment);
-				lecture.save(); //TODO better to call save on the comment object
+				lecture.save();
+				result =true;
 			}else{
 				Comment comment = newComment();
 				comment.setTitle(title).setContent(content);
 				lecture.addComment(comment);
 				lecture.save();
+				result = true;
 			}
 		}else{
 			//New lecture
 			lecture = domainFactory.create(entityBuilder.createLectureEntity());
-			Comment comment = domainFactory.create(entityBuilder.createCommentEntity());
-			lecture.addComment(comment);
-			lecture.save();
+			if(lecture.canSetLectureName(lectureName) && lecture.getLectureDescription().canSetTextDescription(lectureDescription)){
+				lecture.setLectureName(lectureName);
+				lecture.getLectureDescription().setTextDescription(lectureDescription);
+				Comment comment = domainFactory.create(entityBuilder.createCommentEntity());
+				comment.setTitle(title).setContent(content);
+				lecture.addComment(comment);
+				lecture.save();
+				result = true;
+			}
+			
 		}
+		return result;
 	}
 
-	public void updateLectureRating(String lectureName, double rating, Map<String, Integer> statistics) {
-		// TODO implements me....
-		
+	public boolean updateLectureRating(String lectureName, String lectureDescription, Map<String,Integer> statistics) {
+		boolean result = false;
+		Optional<Lecture> optLecture = getLecture(lectureName);
+		Lecture lecture;
+		if(optLecture.isPresent()){
+			lecture = optLecture.get();
+			if(lecture.getStatistics().canUpdate(statistics)){
+				lecture.getStatistics().update(statistics);
+				result = true;
+			}
+		}else{
+			//New lecture
+			lecture = domainFactory.create(entityBuilder.createLectureEntity());
+			if(lecture.canSetLectureName(lectureName) &&  lecture.getLectureDescription().canSetTextDescription(lectureDescription)){
+				lecture.setLectureName(lectureName).getLectureDescription().setTextDescription(lectureDescription);
+				if(lecture.getStatistics().canUpdate(statistics)){
+					lecture.getStatistics().update(statistics);
+					result = true;
+				}
+			}
+		}
+		return result;
 	}
 }

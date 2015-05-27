@@ -45,16 +45,10 @@ public class LectureDescriptionImpl extends AbstractDomainObject<LectureDescript
 	}
 
 	public Object getVideoDescription() {
-		if(!isVideoSupported()){
-			throw new UnsupportedOperationException("This operation is not supported now...");
-		}
 		return null;
 	}
 
 	public LectureDescription setVidoDescription(Object desc) {
-		if(!isVideoSupported()){
-			throw new UnsupportedOperationException("This operation is not supported now...");
-		}
-		return null;
+		return this;
 	}
 }

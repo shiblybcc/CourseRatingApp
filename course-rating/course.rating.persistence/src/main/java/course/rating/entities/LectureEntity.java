@@ -23,8 +23,9 @@ import com.google.common.collect.Sets;
  */
 @Entity
 @NamedQueries({
-	@NamedQuery(name="getAllLectureEntities", query="SELECT l FROM LectureEntity l"),
-	@NamedQuery(name="getLectureEntityWithUniqueName", query="SELECT l FROM LectureEntity l WHERE l.uniqueName= :uniqueName"),
+	@NamedQuery(name="getAllLectureEntities", query="SELECT DISTINCT l FROM LectureEntity l"),
+	@NamedQuery(name="getLectureEntityWithUniqueName", query="SELECT DISTINCT l FROM LectureEntity l WHERE l.uniqueName= :uniqueName"),
+	@NamedQuery(name="getAllMatchingLectures", query="SELECT DISTINCT l FROM LectureEntity l WHERE l.uniqueName LIKE :query")
 })
 public class LectureEntity extends AbstractEntity{
 

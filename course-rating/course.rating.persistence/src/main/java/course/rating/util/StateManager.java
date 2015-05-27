@@ -18,7 +18,7 @@ public interface StateManager {
 	public boolean save(AbstractEntity state);
 	
 	/**
-	 * Deletes the given state
+	 * Deletes the given entity
 	 * 
 	 * @param state  an entity
 	 * @return true iff delete request successful

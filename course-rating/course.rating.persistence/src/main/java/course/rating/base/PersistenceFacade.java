@@ -2,6 +2,7 @@ package course.rating.base;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.ejb.Local;
 
@@ -44,7 +45,7 @@ public interface PersistenceFacade {
 	 * @param proposedLectureName   a string
 	 * @return a list of lectures whose names are similar to the given string
 	 */
-	public List<Lecture> getAllLecturesMatching(String proposedLectureName);
+	public Set<Lecture> getAllMatchingLectures(String proposedLectureName);
 	
 	/**
 	 * Deletes the lecture with the given name
@@ -72,21 +73,22 @@ public interface PersistenceFacade {
 	 * 3) If for a lecture name, there is no comment with the given title, then a new comment will be
 	 *    attached to the lecture.
 	 *    
-	 * @param lectureName    a string which should denotes a lecture
-	 * @param commentTitle   a string as title
-	 * @param content        the content of the comment
+	 * @param lectureName         a string which should denotes a lecture
+	 * @param lectureDescription  a text describing the lecture
+	 * @param commentTitle        a string as title
+	 * @param content             the content of the comment
+	 * @return true  iff call successful
 	 */
-	public void addComment(String lectureName, String title, String content);
+	public boolean addComment(String lectureName, String lectureDescription, String title, String content);
 	
 	/**
 	 * Updates the statistics about a lecture.
 	 * 
-	 * @param lectureName  a string which should denotes a lecture
-	 * @param rating       the rating to add to the actual rating
-	 * @param statistics   Some statistics (Category name to value)
+	 * @param lectureName        a string which should denotes a lecture
+	 * @param lectureDescription a text describing the lecture
+	 * @param rating             the rating to add to the actual rating
+	 * @param statistics         Some statistics (Category name to value)
+	 * @return true        iff call successful.
 	 */
-	//TODO implements me...
-	public void updateLectureRating(String lectureName, double rating, Map<String,Integer> statistics);
-	
-	
+	public boolean updateLectureRating(String lectureName, String lectureDescription, Map<String,Integer> rating);
 }

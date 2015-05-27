@@ -1,14 +1,15 @@
 package course.rating.dao;
 
 import java.util.List;
+import java.util.Set;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.google.common.base.Optional;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import course.rating.entities.AbstractEntity;
 import course.rating.entities.LectureEntity;
@@ -22,7 +23,6 @@ import course.rating.util.StringUtil;
  * @author CR Team
  *
  */
-@Stateless
 public class GlobalDao implements StateManager {
 
 	@PersistenceContext(name = "course_rating_persistence")
@@ -80,5 +80,20 @@ public class GlobalDao implements StateManager {
 	
 	public boolean existsLectureEntityWithUniqueName(String name){
 		return getLectureEntityWithUniqueName(name).isPresent();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public Set<LectureEntity> getAllMatchingLectures(String name){
+		Set<LectureEntity> result = Sets.newHashSet();
+		Query query = manager.createNamedQuery(QueriesNames.GET_ALL_MATCHING_LECTURES);
+		try{
+		  for(String q : StringUtil.getPossibleSearchQueries(name)){
+			  query.setParameter(QueriesNames.GET_ALL_MATCHING_LECTURES_PARAM, "%" + q + "%");
+			  result.addAll((List<LectureEntity>)query.getResultList());
+		  }
+		}catch(Exception ex){
+			//TODO logging...
+		}
+		return result;
 	}
 }

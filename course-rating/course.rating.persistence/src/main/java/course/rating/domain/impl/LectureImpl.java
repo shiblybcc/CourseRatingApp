@@ -43,6 +43,14 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements
 		return getState().getName();
 	}
 
+	public boolean canSetLectureName(String name){
+		boolean result = false;
+		if(name != null){
+			result = !name.isEmpty();
+		}
+		return result;
+	}
+	
 	public Lecture setLectureName(String name) {
 		getState().setName(name);
 		String uniqueName = StringUtil.toLowerCaseWithoutWhiteSpaces(name);
@@ -65,9 +73,9 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements
 		if (canAddComment(comment) && (comment instanceof CommentImpl)) {
 			CommentImpl c = (CommentImpl) comment;
 			titleToComment.put(comment.getTitle(), c);
-			 ((CommentEntity)c.getState()).setLectureEntity(getState());
+			 c.getState().setLectureEntity(getState());
 			this.getState().getCommentEntitys()
-					.add((CommentEntity) c.getState());
+					.add(c.getState());
 		} else {
 			// TODO logging...
 		}
@@ -120,10 +128,12 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements
 	}
 
 	public void save() {
+		this.getLectureDescription().save();
+		this.getStatistics().save();
 		for (Comment comment : titleToComment.values()) {
 			comment.save();
 		}
-		saveState();
+		super.save();
 	}
 
 	public void delete() {

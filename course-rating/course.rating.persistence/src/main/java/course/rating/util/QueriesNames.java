@@ -16,4 +16,8 @@ public interface QueriesNames {
 	public String GET_LECTURE_ENTITY_WITH_UNIQUE_NAME_PARAM = "uniqueName";
 	
 	public String EXISTS_LECTURE_ENTITY_WITH_UNIQUE_NAME = "existsLectureWithUniqueName";
+	
+	public String GET_ALL_MATCHING_LECTURES = "getAllMatchingLectures";
+	
+	public String GET_ALL_MATCHING_LECTURES_PARAM = "query";
 }

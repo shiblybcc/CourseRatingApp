@@ -26,11 +26,19 @@ public class CommentImpl extends AbstractComment<CommentEntity> implements Comme
 	}
 
 	public String getTitle() {
-		return ((CommentEntity)getState()).getTitle();
+		return getState().getTitle();
 	}
 
+	public boolean canSetTitle(String title){
+		boolean result = false;
+		if(title != null){
+			result = !title.isEmpty();
+		}
+		return result;
+	}
+	
 	public Comment setTitle(String title) {
-		((CommentEntity)getState()).setTitle(title);
+		getState().setTitle(title);
 		return this;
 	}
 
@@ -54,8 +62,8 @@ public class CommentImpl extends AbstractComment<CommentEntity> implements Comme
 	public Comment addSubComment(SubComment subComment) {
 		if(canAddSubComment(subComment)){
 			SubCommentImpl sc = (SubCommentImpl)subComment;
-			((SubCommentEntity)sc.getState()).setCommentEntity((CommentEntity)getState());
-			((CommentEntity)getState()).getSubCommentEntitys().add((SubCommentEntity)sc.getState());
+			sc.getState().setCommentEntity(getState());
+			getState().getSubCommentEntitys().add((SubCommentEntity)sc.getState());
 		}else{
 			//TODO logging...
 		}
@@ -70,7 +78,6 @@ public class CommentImpl extends AbstractComment<CommentEntity> implements Comme
 	}
 	
 	public void delete(){
-		this.getStatistics().delete();
 		for(SubComment sc : getAllSubComments()){
 			sc.delete();
 		}

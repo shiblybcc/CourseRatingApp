@@ -1,18 +1,21 @@
 package course.rating.entities;
 
-//import javax.persistence.CascadeType;
+import java.util.Map;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToOne;
+
+import com.google.common.collect.Maps;
 
 /**
  * 
  * @author CR Team
  *
  */
-//TODO complete this class. What about score, etc...
 @Entity
 public class LectureStatisticsEntity extends AbstractEntity{
 
@@ -22,8 +25,11 @@ public class LectureStatisticsEntity extends AbstractEntity{
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private long id;
 	
-	//@OneToOne(mappedBy="statisticsEntity", cascade=CascadeType.ALL)
-	//private LectureEntity lectureEntity;
+	private int ratingCount;
+	
+	@ElementCollection(fetch=FetchType.EAGER)
+	private Map<String,Integer> categoryNameToValue = Maps.newHashMap();
+	
 	
 	public LectureStatisticsEntity(){
 	}
@@ -36,14 +42,41 @@ public class LectureStatisticsEntity extends AbstractEntity{
 		this.id = id;
 	}
 	
-	/*
-	public void setLectureEntity(LectureEntity entity){
-		this.lectureEntity = entity;
+	public int getRatingCount(){
+		return ratingCount;
 	}
 	
-	public LectureEntity getLectureEntity(){
-		return this.lectureEntity;
+	public void setRatingCount(int count){
+		this.ratingCount = count;
 	}
-	*/
-	//TODO toString, equals and hashCode.....
+	
+	public Map<String,Integer> getCategoryNameToValue(){
+		return categoryNameToValue;
+	}
+	
+	public void setCategoryNameToValue(Map<String,Integer> map){
+		categoryNameToValue.putAll(map);
+	}
+	
+	public String toString(){
+		String result = "#Count= " + ratingCount + "\n";
+		result += "Category -> Current value \n";
+		for(String cat : categoryNameToValue.keySet()){
+			result += cat + "= " + categoryNameToValue.get(cat) + "\n";
+		}
+		return result;
+	}
+	public boolean equals(Object obj){
+		boolean result = false;
+		if(obj instanceof LectureStatisticsEntity){
+			result = true;
+			LectureStatisticsEntity entity = (LectureStatisticsEntity)obj;
+			result = ratingCount == entity.getRatingCount();
+			result &= categoryNameToValue.equals(entity.getCategoryNameToValue());
+		}
+		return result;
+	}
+	public int hashCode(){
+		return 77 + (ratingCount + categoryNameToValue.hashCode());
+	}
 }

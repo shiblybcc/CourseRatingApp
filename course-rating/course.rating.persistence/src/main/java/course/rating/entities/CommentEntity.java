@@ -59,14 +59,13 @@ public class CommentEntity extends BasicCommentEntity{
 	
 	public void setIsNewEntity(boolean param){
 		super.setIsNewEntity(param);
-		this.statisticsEntity.setIsNewEntity(param);
 		for(SubCommentEntity entity : subCommentEntitys){
 			entity.setIsNewEntity(param);
 		}
 	}
 	
 	public String toString(){
-		return this.getTitle() + "\n" + this.getContent();
+		return this.getTitle() + "\n \n" + this.getContent();
 	}
 	
 	public boolean equals(Object obj){

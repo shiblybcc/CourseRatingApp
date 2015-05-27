@@ -4,7 +4,7 @@ import course.rating.domain.specification.CommentStatistics;
 import course.rating.entities.CommentStatisticsEntity;
 
 /**
- * Default implementation of {@link CommentStatisticsEntity}.
+ * Default implementation of {@link CommentStatistics}.
  * 
  * @author CR Team
  */

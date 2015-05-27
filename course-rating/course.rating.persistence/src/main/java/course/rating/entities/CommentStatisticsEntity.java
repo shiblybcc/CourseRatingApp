@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToOne;
 
 /**
  * 
@@ -22,9 +21,6 @@ public class CommentStatisticsEntity extends AbstractEntity{
 	
 	private int likeCount;
 	private int dislikeCount;
-	
-	//@OneToOne(mappedBy="statisticsEntity")
-	//private BasicCommentEntity commentEntity;
 	
 	public CommentStatisticsEntity(){
 	}
@@ -53,15 +49,6 @@ public class CommentStatisticsEntity extends AbstractEntity{
 		this.dislikeCount = count;
 	}
 	
-	/*
-	public BasicCommentEntity getCommentEntity(){
-		return this.commentEntity;
-	}
-	
-	public void setCommentEntity(BasicCommentEntity entity){
-		this.commentEntity = entity;
-	}
-	*/
 	public String toString(){
 		return "Statistics : " + likeCount + " people like while " + dislikeCount + " don't like this comment." ;
 	}

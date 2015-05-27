@@ -42,12 +42,8 @@ public abstract class AbstractDomainObject<T extends AbstractEntity> implements 
 		this.stateMgr = manager;
 	}
 	
-	protected void saveState(){
-		stateMgr.save(state);
-	}
-	
 	public void save(){
-		saveState();
+		stateMgr.save(state);
 	}
 	
 	public void delete(){
@@ -63,7 +59,7 @@ public abstract class AbstractDomainObject<T extends AbstractEntity> implements 
 		boolean result = false;
 		if(obj instanceof AbstractDomainObject){
 			AbstractDomainObject<?> domainObject = (AbstractDomainObject<?>)obj;
-			result = state.equals(domainObject.getState());
+			result = state.equals(domainObject.getState()); //two objects are equals if their states are equals
 		}
 		return result;
 	}
