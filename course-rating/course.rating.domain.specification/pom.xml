@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>l2p.app.development</groupId>
-    <artifactId>course.rating</artifactId>
+    <artifactId>course.rating.parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>course.rating.domain.specification</artifactId>

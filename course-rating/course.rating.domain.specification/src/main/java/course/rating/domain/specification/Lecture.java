@@ -17,6 +17,10 @@ public interface Lecture extends Resource{
 	public String getLectureName();
 	
 	/**
+	 * @return true iff the parameter is a valid name
+	 */
+	public boolean canSetLectureName(String name);
+	/**
 	 * Sets the name of this lecture.
 	 * 
 	 * @param name  a string

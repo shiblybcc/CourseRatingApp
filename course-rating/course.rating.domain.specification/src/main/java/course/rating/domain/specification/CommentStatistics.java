@@ -14,7 +14,7 @@ public interface CommentStatistics extends Resource{
 	public int getLikeCount();
 	
 	/**
-	 * Increments the number of students who like the corresponding comment by 1.
+	 * Increments by 1 the number of students who like the corresponding comment .
 	 * 
 	 * @return  the instance itself
 	 */

@@ -21,11 +21,11 @@ public interface LectureStatistics extends Resource{
 	public int getRatingCount();
 	
 	/**
-	 * Gets an immutable map from category's names to average value.
+	 * Gets an unmodifiable map from category's names to average value.
 	 * 
 	 * @return   a map
 	 */
-	public Map<String,Double> getCategoryNameToAverageValueMap();
+	public Map<String,Integer> getCategoryNameToAverageValueMap();
 	
 	/**
 	 * Checks whether the statistics can be updated.
@@ -44,5 +44,4 @@ public interface LectureStatistics extends Resource{
 	 * @return                        the instance object itself
 	 */
 	public LectureStatistics update(Map<String,Integer> categoryNameToValue);
-	
 }

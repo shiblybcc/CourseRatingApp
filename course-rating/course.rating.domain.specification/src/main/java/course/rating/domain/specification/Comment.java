@@ -16,7 +16,10 @@ public interface Comment extends BaseComment{
 	 */
 	public String getTitle();
 	
-	
+	/**
+	 * @return true iff the parameter is a valid title
+	 */
+	public boolean canSetTitle(String title);
 	/**
 	 * Sets the title of the comment
 	 * 
@@ -37,7 +40,7 @@ public interface Comment extends BaseComment{
 	 * comment.
 	 * 
 	 * @param subComment  a sub comment
-	 * @return            true iff the paramater can be added
+	 * @return            true iff the parameter can be added
 	 */
 	public boolean canAddSubComment(SubComment subComment);
 	

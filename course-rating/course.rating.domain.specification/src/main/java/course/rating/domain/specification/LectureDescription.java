@@ -3,7 +3,7 @@ package course.rating.domain.specification;
 /**
  * Defines the API for managing the description of a lecture.
  * Text based description are supported by default.
- * Support for the other types(audio, video) depends on 
+ * Support for the other types(e.g: video) depends on 
  * a concrete implementation.
  *  
  * @author CR Team

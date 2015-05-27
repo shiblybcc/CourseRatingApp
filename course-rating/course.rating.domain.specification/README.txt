@@ -1,4 +1,5 @@
 The specification of the domain we are dealing with. 
-Separating the specification and a concrete implementation promotes flexibility.
+We think that separating the specification from a 
+concrete implementation promotes flexibility.
 
 @author: CR Team (Junior, Ashiqur, Nazmi)

@@ -36,16 +36,6 @@ public interface BaseComment extends Resource{
 	 */
 	public Date getEditionDate();
 	
-	
-	/**
-	 * Sets when the comment was edited/created
-	 * 
-	 * @param date    the edition/creation date
-	 * @return        the instance itself
-	 */
-	//TODO not needed as date can be set at creation time...
-	//public BaseComment setEditionDate(Date date);
-	
 	/**
 	 * @return some statistics about this comment
 	 */
