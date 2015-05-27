@@ -30,9 +30,6 @@ public class CommentTest extends AbstractTestClass {
 		assertEquals(0, myComment.getAllSubComments().size());
 	}
 	
-	/**
-	 * TODO comment this test...
-	 */
 	@Test
 	public void testCase2(){
 		Lecture lecture = TestStub.getFacade().newLecture().setLectureName(TestStub.OPTIMIZATION_A);
@@ -61,9 +58,6 @@ public class CommentTest extends AbstractTestClass {
 		commitTransaction();
 	}
 	
-	/**
-	 * TODO comment this test...
-	 */
 	@Test
 	public void testCase3(){
 		Lecture lecture = TestStub.getFacade().newLecture().setLectureName(TestStub.OPTIMIZATION_A);

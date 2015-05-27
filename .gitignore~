@@ -1,0 +1,11 @@
+# Lists of all files to ignore.
+#
+#@author Junior Lekane
+
+.class
+.project
+.war
+.jar
+.ear
+.settings/
+

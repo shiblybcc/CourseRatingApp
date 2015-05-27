@@ -5,6 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
@@ -45,15 +46,17 @@ public abstract class AbstractTestClass {
 		transaction.commit();
 	}
 	
+	@After
+	public void afterTest(){
+		manager.clear(); // clear DB
+	}
+	
 	@AfterClass
 	public static void ClassTearDown(){
 		if(transaction.isActive()){
 			transaction.commit();
 		}
-		
-		manager.clear(); // clear DB
 		manager.close();
 		factory.close();
-		
 	}
 }

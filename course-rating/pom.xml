@@ -3,16 +3,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>l2p.app.development</groupId>
-	<artifactId>course.rating</artifactId>
+	<artifactId>course.rating.parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Course Rating App</name>
-	<description>An application which allows students to choose some lectures based on student ratingscourse.rating.web</description>
+	<description>An application which allows students to choose some lectures based on student ratings</description>
 	<modules>
 		<module>course.rating.domain.specification</module>
 		<module>course.rating.persistence</module>
-		<module>course.rating.web</module>
+		
 		<module>course.rating.ear</module>
+		
+		<module>../jsttest</module>
 	</modules>
 	<dependencies>
 		<dependency>

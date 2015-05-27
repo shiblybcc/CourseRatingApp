@@ -14,7 +14,6 @@ import course.rating.domain.specification.Lecture;
  * @author CR Team
  *
  */
-//TODO test video description when video are supported...
 public class LectureDescriptionTest extends AbstractTestClass{
 
 	private static Lecture aLecture;

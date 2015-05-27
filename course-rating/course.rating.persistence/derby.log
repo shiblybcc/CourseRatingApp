@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Wed May 20 18:30:34 CEST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.2.2 - (1181258): instance a816c00e-014d-7229-8812-000002edc860 
+on database directory memory:/home/lekane/Documents/Study/Master/SoSe2015/L2pLab/GitHubLocalRepo/CourseRatingApp/course-rating/course.rating.persistence/TestDB  with class loader sun.misc.Launcher$AppClassLoader@6bc7c054 
+Loaded from file:/home/lekane/.m2/repository/org/apache/derby/derby/10.8.2.2/derby-10.8.2.2.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_31-b13
+user.dir=/home/lekane/Documents/Study/Master/SoSe2015/L2pLab/GitHubLocalRepo/CourseRatingApp/course-rating/course.rating.persistence
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

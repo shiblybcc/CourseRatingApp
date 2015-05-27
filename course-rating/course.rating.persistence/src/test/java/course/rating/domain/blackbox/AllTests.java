@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 
 /**
  * Test suite which aggregates all
- * tests. Run this to run all tests.
+ * tests. Run this suite to run all tests.
  * 
  *  @author CR Team
  *
