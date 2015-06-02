@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+<h:body>
+	<ui:composition template="/WEB-INF/template.xhtml">
+		<ui:define name="content">
+			<div class="table-responsive">
+			<h:panelGroup id="table_container" layout="block"></h:panelGroup> <!-- DO NOT REMOVE THIS -->
+				<h1>About</h1>
+				<p>This website is intended to help new students as well as existing students to 
+				select their courses. In RWTH University students from different countries come to study. 
+				Most cases the study system is not similar with their home country. Keeping that in mind 
+				we developed this website to help those students. 
+				</p>
+				<h3>How it works</h3>
+				<p> 
+				Students who take a course in a semester can rate a lecture in different category like whether 
+				the professor was good at his lecture or not, whether the exercises was easy or not etc. 
+				Students can also write their review as comment for the course. And at last other users can 
+				up vote or down vote the comments which explains whether the comment was useful or not. 
+				</p>
+				
+				<p> So if any student is confused with so many courses and which one to choose from them,
+				can visit our website and have a look at the courses that are easy, useful and popular to 
+				other students. </p>
+				
+				<h1>Explanation of Different Functionalities</h1>
+				 Below is the complete explanation for each function
+				 <h3>Rate</h3>
+				 <h3>Comment</h3>
+			</div>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

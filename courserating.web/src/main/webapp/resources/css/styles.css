@@ -1,0 +1,272 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+body {
+  padding-top: 50px;
+  background-color: #f5f5f5;
+}
+footer {
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #fff;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 768px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all 0.25s ease-out;
+    -moz-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+  }
+
+  .row-offcanvas-left
+  .sidebar-offcanvas {
+    left: -33%;
+  }
+
+  .row-offcanvas-left.active {
+    left: 33%;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 33%;
+    margin-left: 10px;
+  }
+}
+
+
+/* Sidebar navigation */
+.nav-sidebar {
+  background-color: #f5f5f5;
+  margin-right: -15px;
+  margin-bottom: 20px;
+  margin-left: -15px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+/* .nav-sidebar > .active > a { */
+/*   color: #fff; */
+/*   background-color: #428bca; */
+/* } */
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+}
+
+/********************************my custome changes****************************************/
+#sidebar{
+	position: fixed;
+	border-right: 1px solid #ddd;
+	height: 100%;
+	background-color: white;	
+}
+
+.nav-sidebar{
+background-color: white;	
+}
+
+.main{
+	float: right;
+}
+
+.navbar-inverse{
+	background-color: white;
+	border: 1px solid #ddd;
+}
+
+.nav-sidebar > .active > a {
+  color: Black;
+  background-color: White;
+  font-weight: bold;
+}
+
+.our-logo{
+	width: 25%;
+	float: left;
+}
+
+.content-bottom{
+	float: right;
+}
+
+a{
+	color: #333;
+}
+
+.up-button{
+	height: 35px;
+	width: 35px;
+	background: white url('/resources/images/up.png');
+	background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+    margin-right: 5px;
+}
+
+.down-button{
+	height: 35px;
+	width: 35px;
+	background: white url('/resources/images/down.png');
+	background-size: contain;
+    background-repeat: no-repeat;
+    float: left;
+}
+
+#up-value{
+	float: left;
+}
+
+#down-value{
+	float: left;
+}
+
+.inner-div{
+	margin-left: 11%;
+	margin-right: 9%;
+}
+
+.main-searchbar{
+	width: 100% !important;
+}
+
+.comment-link{
+	background-color: #e3e3e3;
+	margin-right: 5px;
+	padding: 1px;
+	padding-right: 8px;
+	padding-left: 8px;
+	font-size: 12px;
+	margin-bottom: 5px;
+}
+
+.comment-title{
+	font-weight: bold;
+	font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+	color: #363636;
+}
+
+.comment-submit{
+	float: right;
+	margin-top: 5px;
+}
+
+.select-course{
+	width: 60%;
+	margin-bottom: 15px;
+}
+
+
+.custom-dialog{
+	z-index: 1050 !important;
+}
+
+.top-header{
+	float: left;
+    margin-left: 10%;
+    margin-top: 7px;
+    width: 57%;
+}
+
+.search-bar{
+	margin-top:11px;
+	width: 60%;
+}
+
+.input-bar{
+	width: 100%;
+	background-color: white !important;
+}
+
+.top-nav-bar{
+	width: 100%;
+}
+
+.table-header-control{
+	width: 100%;
+}
+
+.custom-dialog{
+	left: 25% !important;
+	min-width: 45%;
+	top: 17%;	
+}
+
+.custom-comment-dialog{
+	left: 25% !important;
+	min-width: 40%;
+	top: 10%;
+}
+
+.table-row-control{
+	width: 100%;
+}
+
+.order-table-even-column{
+	min-width: 60%;
+}
+
+.order-table-odd-row .order-table-even-row{
+	width: 100%;
+}
+
+.order-table{
+	width: 100%;
+}
+
+.column-inside-content{
+	width: 100%;
+}
+
+.modal-button{
+	width: 100px;
+	margin-left: 7px !important;
+	margin-right: 0px !important;
+}
+
+.comment-table{
+	width: 100%;
+}
+
+.comment-table-column{
+	width: 100% !important;
+}
+
+.comment-table-column > input {
+	width: 100% !important;
+	background-color: white !important;
+}
+
+.ui-panelgrid .ui-panelgrid-cell{
+	border-style: none !important;
+}
+
+.ui-widget-content {
+	border: none !important;
+}
+
+.nav>li>a{
+	  padding: 10px 7px !important;
+}

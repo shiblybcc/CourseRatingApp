@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<ui:insert name="metadata">
+</ui:insert>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="styles.css" />
+	<h:outputStylesheet library="css" name="jquery-ui.css" />
+	<h:outputScript library="js" name="jquery.min.js" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputScript library="js" name="scripts.js" />
+	<h:outputScript library="js" name="jRate.min.js" />
+	<h:outputScript library="js" name="jquery-ui.js" />
+	<h:outputScript library="js" name="custom.js" />
+	<h:outputScript library="js" name="authentication.js" />
+
+	<title>Course Rating</title>
+</h:head>
+<h:body>
+	<ui:include src="/WEB-INF/commentDialog.xhtml" />
+	<ui:include src="/WEB-INF/ratingDialog.xhtml" />
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div style="padding-left: 10%; padding-right: 10%;">
+
+			<h:form id="form_id">
+				<h:commandLink action="index?faces-redirect=true">
+					<h:graphicImage id="logo_id" alt="Our Logo"
+						styleClass="logo our-logo" name="logo.png" library="images" />
+				</h:commandLink>
+
+				<div class="top-header">
+					<ul class="nav navbar-nav top-nav-bar">
+
+						<li class="search-bar">
+						  <p:autoComplete id="search_bar_id"
+								value="#{mainBean.searchQuery}"
+								completeMethod="#{mainBean.getNames()}"
+								placeholder="Enter a lecture name..." maxResults="15"
+								styleClass="input-bar"/>
+						</li>
+						<li>
+						   <p:commandButton value="Search" action="#{mainBean.search()}" update=":table_container" styleClass="button"/>
+						</li>
+						<li><p:commandLink id="cmt_btn_id" value="Comment"
+								styleClass="button" action="#{commentBean.showDialog()}"
+								title="Give a comment" /></li>
+						<li><p:commandLink id="rate_btn_id" value="Rate"
+								styleClass="button" action="#{ratingBean.showDialog()}"
+								title="Rate a lecture" /></li>
+						<li><p:commandButton id="hidden_link"
+								action="#{authenticationBean.retrieveLectureNames()}"
+								style="display: none" /></li>
+						<li>
+						  <p:commandLink value="Help" styleClass="button"
+								action="help?faces-redirect=true" title="How To Use This Site" />
+						</li>
+						<p:commandLink id="sign_in_id"
+							action="#{authenticationBean.getAuthenticationURL()}"
+							oncomplete="handleRedirection(xhr,status,args)">
+							<h:graphicImage id="sign_in" alt="Authenticate" name="login.png"
+								library="images" title="Authenticate" styleClass="sign" />
+						</p:commandLink>
+						<p:commandLink id="sign_out_id"
+							action="#{authenticationBean.signOut()}">
+							<h:graphicImage id="sign_out" alt="Sign out" name="logout.png"
+								library="images" title="Unauthenticate" styleClass="sign" />
+						</p:commandLink>
+					</ul>
+				</div>
+			</h:form>
+		</div>
+	</div>
+	</nav>
+	<div class="container-fluid">
+		<div class="row row-offcanvas row-offcanvas-left">
+			/span
+				<div class="col-sm-12 col-md-13 main">
+					<div class="col-sm-9 inner-div">
+						<ui:insert name="content">
+							 Content of other pages will go here 
+						</ui:insert>
+					</div>
+				</div>
+			/row
+		</div>
+	</div>
+	<footer>
+	<p class="pull-right">©2014 Company</p>
+	</footer>
+</h:body>
+</html>
