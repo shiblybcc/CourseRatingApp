@@ -8,14 +8,12 @@
 	<name>Course Rating - Parent</name>
 	<description>The parent maven project which aggregate all maven modules</description>
 	<modules>
-		<module>courserating.specification</module>
-		<module>courserating.persistence.interfaces</module>
-		<module>courserating.persistence</module>
-		<module>courserating.web.authentication</module>
-		
-		
-    <module>courserating.web</module>
-    <module>courserating.ear</module>
+        <module>../courserating.ear</module>
+        <module>../courserating.persistence</module>
+        <module>../courserating.persistence.interfaces</module>
+        <module>../courserating.specification</module>
+        <module>../courserating.web</module>
+        <module>../courserating.web.authentication</module>
 	</modules>
 	<dependencies>
 		<dependency>

@@ -29,7 +29,8 @@
    - Set the JNDI name to jdbc/courserating
    - Choose the connection pool you created earlier
    - Select enabled
- - Stop Glassfish  "TODO complete this part"
+ - Stop Glassfish  "//TODO complete this part"
  - copy "courserating.ear" to "" and start Glassfish
  - Open a browser and go the following URL: ""
+ - Make sure that the browser can open popup...
  - Enjoy the application! 

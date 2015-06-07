@@ -105,7 +105,15 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements
 		Collections.sort(resultList, new Comparator<Comment>() {
 
 			public int compare(Comment c1, Comment c2) {
-				return c1.getEditionDate().compareTo(c2.getEditionDate());
+				int lc1 = c1.getStatistics().getLikeCount() ;
+				int lc2 = c2.getStatistics().getLikeCount(); 
+				if(lc1 < lc2){
+					return 1 ;
+				}else if(lc1 == lc2){
+					return 0;
+				}else{
+					return -1;
+				}
 			}
 
 		});

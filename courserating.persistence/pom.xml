@@ -5,6 +5,7 @@
 		<groupId>l2p.appdevelopment</groupId>
 		<artifactId>courserating.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../courserating.parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>courserating.persistence</artifactId>
 	<name>Course Rating - Persistence</name>

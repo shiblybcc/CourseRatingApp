@@ -31,7 +31,8 @@ public class AuthenticationBean extends AbstractBean {
             showInfo("INFO", "You have already been authenticated.");
 			return;
 		}
-
+		//show wait dialog
+		RequestContext.getCurrentInstance().execute("PF('statusDialog').show()");
 		L2pAccess l2pAccess = getL2pAccessService();
 		AuthenticationResult result;
 		result = l2pAccess.authenticate();
@@ -76,9 +77,6 @@ public class AuthenticationBean extends AbstractBean {
 				map.put(Constants.LECTURE_NAME_TO_DESCRIPTION, nameToDescription);
 			}
 			sendAuthenticationStatusToClient(true);
-			RequestContext.getCurrentInstance().execute("location.reload()");
-			showInfo("Authentication Successful", "You have been successfully authenticated");
-			
 			
 		} catch (Exception e) {
 			sendAuthenticationStatusToClient(false);
@@ -87,6 +85,9 @@ public class AuthenticationBean extends AbstractBean {
 	}
 
 	private void sendAuthenticationStatusToClient(boolean isAuthenticationSuccessful){
+		
+		//hide wait dialog
+		RequestContext.getCurrentInstance().execute("PF('statusDialog').hide();location.reload()");
 		if(isAuthenticationSuccessful){
 			RequestContext.getCurrentInstance().addCallbackParam("isUserAuthenticated", true);
 		}else{
@@ -104,6 +105,7 @@ public class AuthenticationBean extends AbstractBean {
 			map.remove(Constants.LECTURE_NAME_TO_DESCRIPTION);
 		}
 		getL2pAccessService().close();
+		//send param to UI ...
 		showInfo("Unauthentication Successful", "You have been successfully un-authenticated");
 	}
 }

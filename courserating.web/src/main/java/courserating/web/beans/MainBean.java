@@ -64,15 +64,13 @@ public class MainBean extends AbstractBean {
 		this.searchQuery = query;
 	}
 
-	//TODO reload table content to present only the relevant results...
-	public String search() {
+	public void search() {
 		lectureList.clear();
-		if("".equals(searchQuery)){
+		if("".equals(searchQuery) || searchQuery == null){
 			lectureList.addAll(facade.getAllLectures());
 		}else{
 			lectureList.addAll(facade.getAllMatchingLectures(searchQuery));
 		}
-		RequestContext.getCurrentInstance().update(":content");
-        return "index?faces-redirect=true";
+		RequestContext.getCurrentInstance().update(":table_container");
 	}
 }

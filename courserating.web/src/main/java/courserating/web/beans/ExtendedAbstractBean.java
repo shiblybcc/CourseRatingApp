@@ -52,12 +52,5 @@ public abstract class ExtendedAbstractBean extends AbstractBean {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	protected String getLectureDescription(String lectureName){
-		Map<String,String> nameToDesc = (Map<String,String>)FacesContext.getCurrentInstance()
-				.getExternalContext().getSessionMap().get(Constants.LECTURE_NAME_TO_DESCRIPTION);
-		return nameToDesc.get(lectureName);
-	}
-	
 	protected abstract void doShowDialog();
 }

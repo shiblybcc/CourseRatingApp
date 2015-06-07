@@ -26,15 +26,15 @@
 <h:body>
 	<ui:include src="/WEB-INF/commentDialog.xhtml" />
 	<ui:include src="/WEB-INF/ratingDialog.xhtml" />
+	<ui:include src="/WEB-INF/statusDialog.xhtml"/>
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
 		<div style="padding-left: 10%; padding-right: 10%;">
 
 			<h:form id="form_id">
-				<h:commandLink action="index?faces-redirect=true">
-					<h:graphicImage id="logo_id" alt="Our Logo"
-						styleClass="logo our-logo" name="logo.png" library="images" />
-				</h:commandLink>
+				<h:link outcome="index">
+					<h:graphicImage id="logo_id" alt="Our Logo" styleClass="logo our-logo" name="logo.png" library="images" />
+				</h:link>
 
 				<div class="top-header">
 					<ul class="nav navbar-nav top-nav-bar">
@@ -59,8 +59,7 @@
 								action="#{authenticationBean.retrieveLectureNames()}"
 								style="display: none" /></li>
 						<li>
-						  <p:commandLink value="Help" styleClass="button"
-								action="help?faces-redirect=true" title="How To Use This Site" />
+						  <h:link value="Help" styleClass="button" outcome="help" title="How To Use This Site" />
 						</li>
 						<p:commandLink id="sign_in_id"
 							action="#{authenticationBean.getAuthenticationURL()}"

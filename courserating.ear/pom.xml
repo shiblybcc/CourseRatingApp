@@ -5,11 +5,19 @@
 		<groupId>l2p.appdevelopment</groupId>
 		<artifactId>courserating.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../courserating.parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>courserating.ear</artifactId>
 	<name>Course Rating - EAR</name>
 	<description>This module is used to assemble  the whole application</description>
 	<packaging>ear</packaging>
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>Prime Repo</name>
+			<url>http://repository.primefaces.org</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<!-- JSF dependencies -->
 		<dependency>
@@ -31,6 +39,11 @@
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<version>5.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>flick</artifactId>
+			<version>1.0.10</version>
 		</dependency>
 		<dependency>
 			<groupId>l2p.appdevelopment</groupId>

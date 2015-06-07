@@ -1,6 +1,7 @@
 package courserating.persistence.base;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -54,6 +55,12 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 			entity.setIsNewEntity(false);
 			resultList.add(domainFactory.create(entity));
 		}
+		Collections.sort(resultList, new Comparator<Lecture>() {
+			@Override
+			public int compare(Lecture l1, Lecture l2) {
+				return l1.getLectureName().compareTo(l2.getLectureName());
+			}
+		});
 		return Collections.unmodifiableList(resultList);
 	}
 
@@ -109,7 +116,7 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 				Comment comment = newComment();
 				comment.setTitle(title).setContent(content);
 				lecture.addComment(comment);
-				lecture.save();
+				//lecture.save();
 				result = true;
 			}
 		}else{
