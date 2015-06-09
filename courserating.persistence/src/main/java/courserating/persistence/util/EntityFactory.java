@@ -6,6 +6,7 @@ import courserating.persistence.entities.LectureDescriptionEntity;
 import courserating.persistence.entities.LectureEntity;
 import courserating.persistence.entities.LectureStatisticsEntity;
 import courserating.persistence.entities.SubCommentEntity;
+import courserating.specification.Rating;
 
 
 /**
@@ -26,7 +27,9 @@ public class EntityFactory{
 	}
 	
 	public LectureStatisticsEntity createLectureStatisticsEntity(){
-		return new LectureStatisticsEntity();
+		LectureStatisticsEntity entity = new LectureStatisticsEntity();
+		entity.setRating(Rating.FAIR);
+		return entity;
 	}
 	
 	public CommentEntity createCommentEntity(){

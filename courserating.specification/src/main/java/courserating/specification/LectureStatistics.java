@@ -11,9 +11,9 @@ import java.util.Map;
 public interface LectureStatistics extends Resource{
 
 	/**
-	 * @return  the score of this lecture.
+	 * @return  the rating of this lecture.
 	 */
-	public double getLectureScore();
+	public Rating getLectureRating();
 	
 	/**
 	 * @return the number of students who rated the corresponding lecture

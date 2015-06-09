@@ -24,7 +24,7 @@
 					<tbody>
 						<ui:repeat var="lecture" value="#{mainBean.getLectures()}" varStatus="status">
 							<tr>
-								<td>#{lecture.getStatistics().getLectureScore()}</td>
+								<td>#{lecture.getStatistics().getLectureRating().name()}</td>
 								<td>#{lecture.getCommentCount()}</td>
 								<td>#{lecture.getStatistics().getRatingCount()}</td>
 								<td>

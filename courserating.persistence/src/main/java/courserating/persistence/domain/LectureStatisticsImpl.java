@@ -7,6 +7,7 @@ import com.google.common.collect.Maps;
 import courserating.persistence.entities.LectureStatisticsEntity;
 import courserating.persistence.util.RatingCalculator;
 import courserating.specification.LectureStatistics;
+import courserating.specification.Rating;
 import courserating.specification.RatingCategory;
 
 
@@ -27,7 +28,7 @@ public class LectureStatisticsImpl extends AbstractDomainObject<LectureStatistic
 	/*
 	 * The lecture rating is a derived value
 	 */
-	public double getLectureScore() {
+	public Rating getLectureRating() {
 		return state.getRating();
 	}
 
@@ -53,13 +54,12 @@ public class LectureStatisticsImpl extends AbstractDomainObject<LectureStatistic
 		  for(String category : RatingCategory.ALL){
 			  tmpMap.put(category, getInt("" + categoryNameToValue.get(category)));
 		  }
-		  double currentRating = state.getRating();
+		  Rating currentRating = state.getRating();
 		  currentRating = RatingCalculator.calculateRating(currentRating, tmpMap);
 		  //increases rating count by one
 		  int count = state.getRatingCount() + 1;
 		  state.setRatingCount(count);
 		  state.setRating(currentRating);
-		  //update statistics...
 	   }
 	   return this;
 	}

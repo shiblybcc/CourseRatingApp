@@ -52,12 +52,12 @@
 								<h:panelGrid columns="1"><!-- to display comment and sub-comment -->
 									<h:outputText value="#{comment.getTitle()}" styleClass="comment-title" />
 									<h:outputText value="#{comment.getContent()}" styleClass="comment-content" />
-									<h:outputText value="Edited on #{comment.getEditionDate()}" styleClass="comment-date" />
+									<h:outputText value="Edited on #{comment.getEditionDate().toString()}" styleClass="comment-date" />
 									<p:commandLink value="Reply" action="#{lectureBean.setCommentTitle(comment.getTitle())}" oncomplete="PF('replyDialog').show()"/>
 									<ui:repeat var="subComment" value="#{comment.getAllSubComments()}">
 									  <hr/>
 									  <h:outputText value="#{subComment.getContent()}"/>
-									  <h:outputText value=" Edited on #{subComment.getEditionDate()}"/>
+									  <h:outputText value=" Edited on #{subComment.getEditionDate().toString()}"/>
 									</ui:repeat>
 								</h:panelGrid>
 							</h:panelGrid>

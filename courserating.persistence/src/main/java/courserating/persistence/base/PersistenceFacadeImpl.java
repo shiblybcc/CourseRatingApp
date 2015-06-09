@@ -18,8 +18,10 @@ import courserating.persistence.entities.LectureEntity;
 import courserating.persistence.interfaces.PersistenceFacade;
 import courserating.persistence.util.DomainObjectFactory;
 import courserating.persistence.util.EntityBuilder;
+import courserating.persistence.util.RatingCalculator;
 import courserating.specification.Comment;
 import courserating.specification.Lecture;
+import courserating.specification.Rating;
 import courserating.specification.SubComment;
 
 
@@ -159,5 +161,10 @@ public class PersistenceFacadeImpl implements PersistenceFacade{
 		}
 		lecture.save();
 		return result;
+	}
+
+	@Override
+	public Map<Rating, Integer> getRatingToWeight() {
+		return RatingCalculator.getRatingToWeight();
 	}
 }

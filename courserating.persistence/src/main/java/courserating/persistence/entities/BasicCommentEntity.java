@@ -33,7 +33,7 @@ public abstract class BasicCommentEntity extends AbstractEntity{
 	@Lob
 	protected String content;
 	
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	protected Date date;
 	
 	@OneToOne(cascade= CascadeType.ALL)

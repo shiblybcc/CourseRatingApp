@@ -10,6 +10,7 @@ import com.google.common.base.Optional;
 
 import courserating.specification.Comment;
 import courserating.specification.Lecture;
+import courserating.specification.Rating;
 import courserating.specification.SubComment;
 
 
@@ -94,4 +95,11 @@ public interface PersistenceFacade {
 	 * @return true        iff call successful.
 	 */
 	public boolean updateLectureRating(String lectureName, String lectureDescription, Map<String,Integer> rating);
+	
+	/**
+	 * Each possible rating value is assigned a weight.
+	 * 
+	 * @return a map of rating values to corresponding weight.
+	 */
+	public Map<Rating,Integer> getRatingToWeight();
 }

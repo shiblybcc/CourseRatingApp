@@ -1,9 +1,13 @@
 package courserating.persistence.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import courserating.specification.Rating;
 
 /**
  * 
@@ -21,7 +25,8 @@ public class LectureStatisticsEntity extends AbstractEntity{
 	
 	private int ratingCount;
 	
-	private double rating;
+	@Enumerated(EnumType.STRING)
+	private Rating rating;
 	
 	//TODO upate statistics...
 	//private Map<String, Map<Integer,Integer>> statistics;
@@ -46,11 +51,11 @@ public class LectureStatisticsEntity extends AbstractEntity{
 	}
 	
 	
-	public void setRating(double rating){
+	public void setRating(Rating rating){
 		this.rating = rating;
 	}
 	
-	public double getRating(){
+	public Rating getRating(){
 		return rating;
 	}
 	
@@ -80,6 +85,6 @@ public class LectureStatisticsEntity extends AbstractEntity{
 		return result;
 	}
 	public int hashCode(){
-		return 77 + (ratingCount + ((int)rating));
+		return 77 + (ratingCount + rating.hashCode());
 	}
 }
