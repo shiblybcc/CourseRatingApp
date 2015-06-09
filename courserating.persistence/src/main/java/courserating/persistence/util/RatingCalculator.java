@@ -10,7 +10,6 @@ import courserating.specification.Rating;
 
 /**
  * Logic for computing lecture rating.
- * This is an optimistic approach.
  * 
  * @author CR Team
  *
@@ -25,7 +24,8 @@ public class RatingCalculator {
 		.put(Rating.FAIR, 0)
 		.put(Rating.BAD, -1)
 		.put(Rating.WORSE, -2)
-		.put(Rating.WORST, -3).build();
+		.put(Rating.WORST, -3)
+		.build();
 		return map;
 	}
 	
@@ -34,12 +34,8 @@ public class RatingCalculator {
 		for(String key : map.keySet()){
 			tmp += map.get(key);
 		}
-		tmp = tmp/(map.size());
-		int weight = (int)Math.ceil(tmp);
+		tmp = tmp/(map.size()  + 1);
+		int weight = (int)tmp;
 		return getRatingToWeight().inverse().get(weight);
-	}
-	
-	public static void main(String[] args){
-		
 	}
 }
