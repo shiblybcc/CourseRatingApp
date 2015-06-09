@@ -26,29 +26,28 @@
 <h:body>
 	<ui:include src="/WEB-INF/commentDialog.xhtml" />
 	<ui:include src="/WEB-INF/ratingDialog.xhtml" />
-	<ui:include src="/WEB-INF/statusDialog.xhtml"/>
+	<ui:include src="/WEB-INF/statusDialog.xhtml" />
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
-		<div style="padding-left: 10%; padding-right: 10%;">
+		<div style="padding-left: 5%; padding-right: 10%;">
 
 			<h:form id="form_id">
 				<h:link outcome="index">
-					<h:graphicImage id="logo_id" alt="Our Logo" styleClass="logo our-logo" name="logo.png" library="images" />
+					<h:graphicImage id="logo_id" alt="Our Logo"
+						styleClass="logo our-logo" name="logo.png" library="images" />
 				</h:link>
 
 				<div class="top-header">
 					<ul class="nav navbar-nav top-nav-bar">
 
-						<li class="search-bar">
-						  <p:autoComplete id="search_bar_id"
+						<li class="search-bar"><p:autoComplete id="search_bar_id"
 								value="#{mainBean.searchQuery}"
 								completeMethod="#{mainBean.getNames()}"
 								placeholder="Enter a lecture name..." maxResults="15"
-								styleClass="input-bar"/>
-						</li>
-						<li>
-						   <p:commandButton value="Search" action="#{mainBean.search()}" update=":table_container" styleClass="button"/>
-						</li>
+								styleClass="input-bar" /></li>
+						<li><p:commandButton value=""
+								action="#{mainBean.search()}" update=":table_container"
+								styleClass="button search-button" /></li>
 						<li><p:commandLink id="cmt_btn_id" value="Comment"
 								styleClass="button" action="#{commentBean.showDialog()}"
 								title="Give a comment" /></li>
@@ -58,20 +57,20 @@
 						<li><p:commandButton id="hidden_link"
 								action="#{authenticationBean.retrieveLectureNames()}"
 								style="display: none" /></li>
-						<li>
-						  <h:link value="Help" styleClass="button" outcome="help" title="How To Use This Site" />
-						</li>
-						<p:commandLink id="sign_in_id"
-							action="#{authenticationBean.getAuthenticationURL()}"
-							oncomplete="handleRedirection(xhr,status,args)">
-							<h:graphicImage id="sign_in" alt="Authenticate" name="login.png"
-								library="images" title="Authenticate" styleClass="sign" />
-						</p:commandLink>
+						<li><h:link value="Help" styleClass="button" outcome="help"
+								title="How To Use This Site" /></li>
+						<li><p:commandLink id="sign_in_id"
+								action="#{authenticationBean.getAuthenticationURL()}"
+								oncomplete="handleRedirection(xhr,status,args)">
+								<h:graphicImage id="sign_in" alt="Authenticate" name="login.png"
+									library="images" title="Authenticate" styleClass="sign" />
+							</p:commandLink></li>
+					    <li class="hide hide-signout">
 						<p:commandLink id="sign_out_id"
 							action="#{authenticationBean.signOut()}">
 							<h:graphicImage id="sign_out" alt="Sign out" name="logout.png"
 								library="images" title="Unauthenticate" styleClass="sign" />
-						</p:commandLink>
+						</p:commandLink></li>
 					</ul>
 				</div>
 			</h:form>
@@ -80,19 +79,17 @@
 	</nav>
 	<div class="container-fluid">
 		<div class="row row-offcanvas row-offcanvas-left">
-			/span
-				<div class="col-sm-12 col-md-13 main">
-					<div class="col-sm-9 inner-div">
-						<ui:insert name="content">
+			<div class="col-sm-12 col-md-13 main">
+				<div class="col-sm-9 inner-div">
+					<ui:insert name="content">
 							 Content of other pages will go here 
 						</ui:insert>
-					</div>
 				</div>
-			/row
+			</div>
 		</div>
 	</div>
 	<footer>
-	<p class="pull-right">©2014 Company</p>
+	<p class="pull-right our-footer">©2014 Company</p>
 	</footer>
 </h:body>
 </html>

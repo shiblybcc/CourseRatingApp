@@ -1,13 +1,17 @@
-$(function(){
-	$('.comment-expand').click(function(){
-		   $(this).siblings('.comment-collapse').toggleClass('hide');
-		});
+$(function() {
+	$("#sign_out_id").hide();
 });
 
-$(function(){
-	$('.reply-comment').click(function(){
-		   $(this).siblings('.comment-area-collapse').toggleClass('hide');
-		});
+$(function() {
+	$('.comment-expand').click(function() {
+		$(this).siblings('.comment-collapse').toggleClass('hide');
+	});
+});
+
+$(function() {
+	$('.reply-comment').click(function() {
+		$(this).siblings('.comment-area-collapse').toggleClass('hide');
+	});
 });
 
 $(function() {
@@ -27,9 +31,9 @@ $(function() {
 		height : 35,
 		precision : 0.1,
 		minSelected : 1,
-		readOnly: true,
+		readOnly : true,
 		onChange : function(rating) {
-//			$('#jRate_value_1').text("Your Rating: " + rating);
+			// $('#jRate_value_1').text("Your Rating: " + rating);
 		}
 	});
 
@@ -44,9 +48,9 @@ $(function() {
 		height : 35,
 		precision : 0.1,
 		minSelected : 1,
-		readOnly: true,
+		readOnly : true,
 		onChange : function(rating) {
-//			$('#jRate_value_2').text("Your Rating: " + rating);
+			// $('#jRate_value_2').text("Your Rating: " + rating);
 		}
 	});
 
@@ -61,9 +65,9 @@ $(function() {
 		height : 35,
 		precision : 0.1,
 		minSelected : 1,
-		readOnly: true,
+		readOnly : true,
 		onChange : function(rating) {
-//			$('#jRate_value_3').text("Your Rating: " + rating);
+			// $('#jRate_value_3').text("Your Rating: " + rating);
 		}
 	});
 
@@ -78,9 +82,9 @@ $(function() {
 		height : 35,
 		precision : 0.1,
 		minSelected : 1,
-		readOnly: true,
+		readOnly : true,
 		onChange : function(rating) {
-//			$('#jRate_value_4').text("Your Rating: " + rating);
+			// $('#jRate_value_4').text("Your Rating: " + rating);
 		}
 	});
 
@@ -95,9 +99,9 @@ $(function() {
 		height : 35,
 		precision : 0.1,
 		minSelected : 1,
-		readOnly: true,
+		readOnly : true,
 		onChange : function(rating) {
-//			$('#jRate_value_5').text("Your Rating: " + rating);
+			// $('#jRate_value_5').text("Your Rating: " + rating);
 		}
 	});
 

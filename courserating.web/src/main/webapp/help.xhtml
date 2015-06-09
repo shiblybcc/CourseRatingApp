@@ -11,29 +11,74 @@
 	<ui:composition template="/WEB-INF/template.xhtml">
 		<ui:define name="content">
 			<div class="table-responsive">
-			<h:panelGroup id="table_container" layout="block"></h:panelGroup> <!-- DO NOT REMOVE THIS -->
+				<h:panelGroup id="table_container" layout="block"></h:panelGroup>
+				<!-- DO NOT REMOVE THIS -->
 				<h1>About</h1>
-				<p>This website is intended to help new students as well as existing students to 
-				select their courses. In RWTH University students from different countries come to study. 
-				Most cases the study system is not similar with their home country. Keeping that in mind 
-				we developed this website to help those students. 
+				<p>This website is intended to help new students as well as
+					existing students to select their courses. In RWTH University
+					students from different countries come to study. Most cases the
+					study system is not similar with their home country. Keeping that
+					in mind we developed this website to help those students.</p>
+				<p>Students who take a course in a semester can rate a lecture
+					in different category like whether the professor was good at his
+					lecture or not, whether the exercises was easy or not or if it was
+					helpful or not etc. Students can also write their review as comment
+					for the course. And also other users can up vote or down vote the
+					comments which explains whether the comment was useful or not.</p>
+
+				<p>So if any student is confused with so many courses and which
+					one to choose from them, can visit our website and have a look at
+					the courses that are easy, useful and popular to other students.</p>
+					
+				<h2>How to Authenticate</h2>
+				<p>
+					To rate or comment a lecture first you have to authenticate using
+					your RWTH campus office credentials. As soon as you click
+					authenticate button you will redirected to to another page where
+					you have to enter your credentials. <br /><br />
+					<h:graphicImage styleClass="authenticate" name="authenticate1.png"
+						library="images" />
+					<br /><br /> If you enter correct credentials then you will be
+					redirected to this page <br /><br />
+
+					<h:graphicImage styleClass="authenticate" name="authenticate2.png"
+						library="images" /><br />
+					<br /> After you click authorize you can start rating and
+					commenting the courses you are taking this semester.
+
 				</p>
-				<h3>How it works</h3>
-				<p> 
-				Students who take a course in a semester can rate a lecture in different category like whether 
-				the professor was good at his lecture or not, whether the exercises was easy or not etc. 
-				Students can also write their review as comment for the course. And at last other users can 
-				up vote or down vote the comments which explains whether the comment was useful or not. 
+
+
+				<h2>How to Rate</h2>
+				<p>
+					To rate a lecture first click "Rate" from the top header menu. <br /><br />
+					<h:graphicImage styleClass="authenticate" name="rating.png"
+						library="images" /><br />
+					<br /> A popup will appear as below <br /><br />
+					<h:graphicImage styleClass="authenticate" name="rating1.png"
+						library="images" /><br />
+					<br /> You can select the lecture you want to rate and then you
+					can rate as excellent, very good, good, fair etc and then click ok
+					and your rating will be saved in our system. Please be honest and
+					don't spam the system.
+
 				</p>
-				
-				<p> So if any student is confused with so many courses and which one to choose from them,
-				can visit our website and have a look at the courses that are easy, useful and popular to 
-				other students. </p>
-				
-				<h1>Explanation of Different Functionalities</h1>
-				 Below is the complete explanation for each function
-				 <h3>Rate</h3>
-				 <h3>Comment</h3>
+
+				<h2>How to Comment</h2>
+				<p>
+					To comment or review a lecture first click "Comment" from the top
+					header menu. <br /><br />
+
+					<h:graphicImage styleClass="authenticate" name="comment1.png"
+						library="images" /><br />
+					<br /> A popup will appear as below <br /><br />
+					<h:graphicImage styleClass="authenticate" name="comment.png"
+						library="images" /><br />
+					<br /> You can select the lecture you want to comment and then you
+					have to give a title of your comment and write your comment. Click
+					ok to save your comment. Please be honest and don't spam the
+					system.
+				</p>
 			</div>
 		</ui:define>
 	</ui:composition>
