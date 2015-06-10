@@ -167,6 +167,18 @@ a {
 	color: #363636;
 }
 
+.comment-date{
+	color: #999;
+}
+
+.comment-date-cell{
+	padding-left: 10px;
+}
+.custom-reply-dialog{
+	height: 240 !important;
+	 width: 35% !important; 
+}
+
 .comment-submit {
 	float: right;
 	margin-top: 5px;
@@ -310,4 +322,16 @@ body {
 }
 .ui-dialog-titlebar-close{
 	background-color: white;
+}
+
+.comment-tab-feedback{
+	vertical-align:top;
+}
+.like-count{
+	padding-right:5px;
+	vertical-align:bottom;
+}
+.dislike-count{
+	vertical-align:top;
+	padding-right: 5px;
 }

@@ -11,21 +11,29 @@
 	<ui:composition template="/WEB-INF/template.xhtml">
 		<ui:define name="metadata">
 			<f:metadata>
-				<f:viewParam name="lectureName" value="#{lectureBean.lectureName}"/>
+				<f:viewParam name="lectureName" value="#{lectureBean.lectureName}" />
 				<f:event listener="#{lectureBean.init}" type="preRenderView" />
 			</f:metadata>
 		</ui:define>
 		<ui:define name="content">
-			<h:panelGroup id="table_container" layout="block"></h:panelGroup><!-- DO NOT REMOVE THIS -->
-			
-			<p:dialog widgetVar="replyDialog" header="Reply" modal="true" draggable="true" resizable="false" height="350">
-			  <h:form>
-			    <h:inputTextarea value="#{lectureBean.content}" cols="40" rows="10"/>
-			    <p:commandButton value="Ok" action="#{lectureBean.reply()}" oncomplete="PF('replyDialog').hide()" styleClass="modal-button"/>
-			    <p:commandButton value="Cancel" action="#{lectureBean.setCommentTitle(null)}" oncomplete="PF('replyDialog').hide()" styleClass="modal-button"/>
-			  </h:form>
+			<h:panelGroup id="table_container" layout="block"></h:panelGroup>
+			<!-- DO NOT REMOVE THIS -->
+
+			<p:dialog widgetVar="replyDialog" header="Reply" modal="true"
+				draggable="true" resizable="false"
+				styleClass="custom-reply-dialog">
+				<h:form>
+					<h:inputTextarea value="#{lectureBean.content}" cols="43" rows="5"/>
+					<div class="modal-footer">
+						<p:commandButton value="Ok" action="#{lectureBean.reply()}"
+							oncomplete="PF('replyDialog').hide()" styleClass="modal-button" />
+						<p:commandButton value="Cancel"
+							action="#{lectureBean.setCommentTitle(null)}"
+							oncomplete="PF('replyDialog').hide()" styleClass="modal-button" />
+					</div>
+				</h:form>
 			</p:dialog>
-			
+
 			<h2 class="sub-header">#{lectureBean.getLectureName()}</h2>
 			<p:tabView>
 				<p:tab title="Comments">
@@ -33,44 +41,52 @@
 						<ui:repeat var="comment"
 							value="#{lectureBean.getLecture().getAllComments()}"
 							varStatus="status">
-							<h:panelGrid columns="2" cellpadding="40">
-								<h:panelGrid columns="1"><!-- to display (dis) like count -->
-									<h:panelGrid columns="2">
-										<h:outputText value="#{comment.getStatistics().getLikeCount()}" />
-									    <p:commandLink action="#{lectureBean.like(comment.getTitle())}">
-									      <h:graphicImage alt="UP" styleClass="up-button" name="up.png" library="images" title="Like"/>
-									    </p:commandLink>
-									</h:panelGrid>
-									<h:panelGrid columns="2">
-										<h:outputText value="#{comment.getStatistics().getDislikeCount()}" />
-										<p:commandLink action="#{lectureBean.dislike(comment.getTitle())}">
-										  <h:graphicImage alt="DOWN" styleClass="down-button" name="down.png" library="images" title="Dislike"/>
-										</p:commandLink>
-									</h:panelGrid>
+							<h:panelGrid columns="2" cellspacing="10"
+								columnClasses="comment-tab-feedback,">
+								<h:panelGrid columns="2">
+									<h:outputText value="#{comment.getStatistics().getLikeCount()}"
+										styleClass="like-count" />
+									<p:commandLink action="#{lectureBean.like(comment.getTitle())}">
+										<h:graphicImage alt="UP" styleClass="up-button" name="up.png"
+											library="images" title="Like" />
+									</p:commandLink>
+
+									<h:outputText
+										value="#{comment.getStatistics().getDislikeCount()}"
+										styleClass="dislike-count" />
+									<p:commandLink
+										action="#{lectureBean.dislike(comment.getTitle())}">
+										<h:graphicImage alt="DOWN" styleClass="down-button"
+											name="down.png" library="images" title="Dislike" />
+									</p:commandLink>
 								</h:panelGrid>
 
-								<h:panelGrid columns="1"><!-- to display comment and sub-comment -->
+
+								<h:panelGrid columns="1">
 									<h:outputText value="#{comment.getTitle()}" styleClass="comment-title" />
 									<h:outputText value="#{comment.getContent()}" styleClass="comment-content" />
-									<h:outputText value="Edited on #{comment.getEditionDate().toString()}" styleClass="comment-date" />
-									<p:commandLink value="Reply" action="#{lectureBean.setCommentTitle(comment.getTitle())}" oncomplete="PF('replyDialog').show()"/>
-									<ui:repeat var="subComment" value="#{comment.getAllSubComments()}">
-									  <hr/>
-									  <h:outputText value="#{subComment.getContent()}"/>
-									  <h:outputText value=" Edited on #{subComment.getEditionDate().toString()}"/>
+									<h:panelGrid columns="2" cellspacing="10" columnClasses=",comment-date-cell">
+									  <p:commandLink value="Reply" 
+									      action="#{lectureBean.setCommentTitle(comment.getTitle())}" 
+									      oncomplete="PF('replyDialog').show()" styleClass="comment-reply" />
+									   <h:outputText value="Edited on #{comment.getEditionDate().toString()}" styleClass="comment-date" />    
+									</h:panelGrid>
+								
+									<ui:repeat var="subComment"
+										value="#{comment.getAllSubComments()}">
+										<hr />
+										<h:outputText value="#{subComment.getContent()}" />
+										<div>
+											<h:outputText
+												value=" Edited on #{subComment.getEditionDate().toString()}" styleClass="comment-date"/>
+										</div>
+
 									</ui:repeat>
 								</h:panelGrid>
 							</h:panelGrid>
 							<hr />
 						</ui:repeat>
 					</h:form>
-				</p:tab>
-
-				<p:tab title="Statistics">
-				   <div>
-				   <h:outputText value="TODO complete me..." />
-				   </div>
-					
 				</p:tab>
 
 				<p:tab title="Course Info">
