@@ -66,10 +66,11 @@ public class CommentBean extends ExtendedAbstractBean {
 	}
 
 	public void addComment() {
-		if (facade.addComment(getLectureName(), getLectureDescription(getLectureName()), commentTitle, content)) {
+		if (facade.canAddComment(getLectureName(), getLectureDescription(getLectureName()), commentTitle, content)) {
+			facade.addComment(getLectureName(), getLectureDescription(getLectureName()), commentTitle, content);
 			RequestContext.getCurrentInstance().execute("PF('cmtDialog').hide(); location.reload()");
 		} else {
-		   showError("Comment error E004", "Makes sure that you entered a lecture name, a comment title and a content");
+		   showError("Error E004", "You need to specify a non empty title and content");
 		}
 	}
 

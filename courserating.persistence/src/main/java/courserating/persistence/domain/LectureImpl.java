@@ -66,12 +66,12 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements
 		return factory.create(getState().getDescriptionEntity());
 	}
 
-	public boolean canAddComment(Comment comment) {
-		return !titleToComment.containsKey(comment.getTitle());
+	public boolean canAddComment(String title, String content) {
+		return title != null && !titleToComment.containsKey(title);
 	}
 
 	public Lecture addComment(Comment comment) {
-		if (canAddComment(comment) && (comment instanceof CommentImpl)) {
+		if (canAddComment(comment.getTitle(),comment.getContent()) && (comment instanceof CommentImpl)) {
 			CommentImpl c = (CommentImpl) comment;
 			titleToComment.put(comment.getTitle(), c);
 			 c.getState().setLectureEntity(getState());

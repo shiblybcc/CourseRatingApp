@@ -66,23 +66,34 @@ public interface PersistenceFacade {
 	public SubComment newSubComment();
 	
 	/**
-	 * Add a new comment or sub-comment. This method works as follows:
+	 * Checks whether the comment with the given title and content can be attached to the 
+	 * the lecture with the given name.
 	 * 
-	 * 1-) If for the given lecture name, no data is available in the DB, then new resources
-	 *     will be allocated. If data are available, then the new (sub-)comment will be attached
-	 *     to the lecture data.
-	 * 2) If for a lecture name, there is already a comment with the given title, then the data being
-	 *    send will be interpreted as sub-comment.
-	 * 3) If for a lecture name, there is no comment with the given title, then a new comment will be
-	 *    attached to the lecture.
-	 *    
-	 * @param lectureName         a string which should denotes a lecture
-	 * @param lectureDescription  a text describing the lecture
-	 * @param commentTitle        a string as title
-	 * @param content             the content of the comment
-	 * @return true  iff call successful
+	 * @param lectureName         The name of a lecture
+	 * @param lectureDescription  The description of the lecture
+	 * @param title               The title of the comment
+	 * @param content             The content of the comment
+	 * @return                    true iff the comment can be added
 	 */
-	public boolean addComment(String lectureName, String lectureDescription, String title, String content);
+	public boolean canAddComment(String lectureName, String lectureDescription, String title, String content);
+	
+	/**
+	 * Add a new comment. This method works as follows:
+	 * 
+	 * 1-) If for the given lecture name, no record is available in the DB, then new resources
+	 *     will be allocated for that lecture, then the new comment will be attached
+	 *     to the lecture data.
+	 * 2-) If the then given lecture name, a record is available, then the new comment will be
+	 *     attached to that record.
+	 *    
+	 * @param lectureName         The name of a lecture
+	 * @param lectureDescription  The description of the lecture
+	 * @param commentTitle        The title of the comment
+	 * @param content             The content of the comment
+	 * @return true  iff call successful
+	 * @throws IllegalArgumentException if canAddComment returns false
+	 */
+	public void addComment(String lectureName, String lectureDescription, String title, String content) throws IllegalArgumentException;
 	
 	
 	/**

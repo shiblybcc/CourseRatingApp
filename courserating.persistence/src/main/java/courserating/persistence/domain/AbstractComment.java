@@ -17,7 +17,7 @@ public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomai
 
 	private static final long serialVersionUID = 11223L;
 
-	private static final int MAX_CHARACTER_COUNT = 2000;
+	private static final int MAX_CHARACTER_COUNT = 5000;
 	
 	protected AbstractComment(T state) {
 		super(state);

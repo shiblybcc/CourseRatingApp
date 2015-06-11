@@ -39,7 +39,7 @@ public interface Lecture extends Resource{
 	 * 
 	 * @return true iff the given comment can be attached to this lecture
 	 */
-	public boolean canAddComment(Comment comment);
+	public boolean canAddComment(String title, String content);
 	
 	/**
 	 * Attaches the given comment to this lecture.
