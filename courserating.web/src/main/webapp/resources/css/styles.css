@@ -320,9 +320,6 @@ body {
 .authenticate{
 	border: 1px solid black;
 }
-.ui-dialog-titlebar-close{
-	background-color: white;
-}
 
 .comment-tab-feedback{
 	vertical-align:top;

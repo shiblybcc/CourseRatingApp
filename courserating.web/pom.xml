@@ -64,9 +64,10 @@
 			<version>5.2</version>
 			<optional>true</optional>
 		</dependency>
+		 
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>redmond</artifactId>
+			<artifactId>sam</artifactId>
 			<version>1.0.10</version>
 			<optional>true</optional>
 		</dependency>

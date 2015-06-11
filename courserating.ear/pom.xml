@@ -40,11 +40,11 @@
 			<artifactId>primefaces</artifactId>
 			<version>5.2</version>
 		</dependency>
-		<dependency>
+	    <dependency>
 			<groupId>org.primefaces.themes</groupId>
-			<artifactId>redmond</artifactId>
+			<artifactId>sam</artifactId>
 			<version>1.0.10</version>
-		</dependency>
+		</dependency> 
 		<dependency>
 			<groupId>l2p.appdevelopment</groupId>
 			<artifactId>courserating.persistence</artifactId>
