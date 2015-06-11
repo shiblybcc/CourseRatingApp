@@ -95,7 +95,24 @@ public interface PersistenceFacade {
 	 */
 	public void addComment(String lectureName, String lectureDescription, String title, String content) throws IllegalArgumentException;
 	
-	
+	/**
+	 * Check that a sub comment can be attached to a comment with the given title.
+	 * 
+	 * @param lectureName  The name of a lecture
+	 * @param title        The title of the comment
+	 * @param content      The content of the sub-comment
+	 * @return             true iff the sub-comment can be added
+	 */
+	public boolean canAddSubComment(String lectureName, String title, String content);
+	/**
+	 * Adds a sub-comment.
+	 * 
+	 * @param lectureName  The name of a lecture
+	 * @param title        The title of the comment
+	 * @param content      The content of the comment
+	 * @throws IllegalArgumentException if canAddSubComment(...) returns false
+	 */
+	public void addSubComment(String lectureName,String title, String content);
 	/**
 	 * Updates the statistics about a lecture.
 	 * 

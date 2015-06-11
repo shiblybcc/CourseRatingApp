@@ -120,8 +120,11 @@ public class LectureBean extends AbstractBean {
 		}else if(!takeLecture(lectureName)){
 			showError("Error E012", "You can not perform this operation...");
 			return;
+		}else if(facade.canAddSubComment(lectureName, commentTitle, content)){
+			facade.addSubComment(lectureName, commentTitle, content);
+			RequestContext.getCurrentInstance().execute("location.reload()"); 
+		}else{
+			showError("Error E013", "An internal error occured...");
 		}
-		facade.addComment(lectureName, getLectureDescription(lectureName), commentTitle, content);
-		RequestContext.getCurrentInstance().execute("location.reload()"); 
 	}
 }

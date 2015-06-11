@@ -148,6 +148,29 @@ public class PersistenceFacadeImpl implements PersistenceFacade {
 		lecture.save();
 	}
 
+	public boolean canAddSubComment(String lectureName, String title, String content){
+		boolean result = lectureName != null && title != null && content != null;
+		Optional<Lecture> optLecture = getLecture(lectureName);
+		if(result && optLecture.isPresent()){
+			result = optLecture.get().hasCommentWithTitle(title);
+		}
+		return result;
+	}
+	
+	public void addSubComment(String lectureName,String title, String content){
+		if(!canAddSubComment(lectureName, title, content)){
+			throw new IllegalArgumentException("The sub-comment can not be added...");
+		}
+		SubComment sc = newSubComment();
+		if(sc.canSetContent(content)){
+			sc.setContent(content);
+			Lecture lecture = getLecture(lectureName).get();
+			 lecture.getCommentWithTitle(title).addSubComment(sc);
+			 lecture.save();
+			 
+		}
+	}
+	
 	public boolean updateLectureRating(String lectureName,
 			String lectureDescription, Map<String, Integer> statistics) {
 		boolean result = false;
