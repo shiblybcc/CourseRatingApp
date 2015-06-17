@@ -28,9 +28,6 @@ public class LectureStatisticsEntity extends AbstractEntity{
 	@Enumerated(EnumType.STRING)
 	private Rating rating;
 	
-	//TODO upate statistics...
-	//private Map<String, Map<Integer,Integer>> statistics;
-	
 	public LectureStatisticsEntity(){
 	}
 	
@@ -58,16 +55,6 @@ public class LectureStatisticsEntity extends AbstractEntity{
 	public Rating getRating(){
 		return rating;
 	}
-	
-	/*
-	public Map<String,Integer> getStatistics(){
-		return statistics;
-	}
-	
-	public void setCategoryNameToValue(Map<String,Integer> map){
-		categoryNameToValue.putAll(map);
-	}
-	*/
 	
 	public String toString(){
 		String result = "Rating: " + rating ; 

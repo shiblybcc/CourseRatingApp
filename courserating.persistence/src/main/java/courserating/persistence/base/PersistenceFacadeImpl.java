@@ -5,7 +5,10 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -33,6 +36,9 @@ import courserating.specification.SubComment;
 @Stateless
 public class PersistenceFacadeImpl implements PersistenceFacade {
 
+	private static final String LOGGER_NAME = "courserating.persistence.facade";
+	private Logger logger;
+	
 	@EJB
 	private Dao dao;
 
@@ -43,12 +49,39 @@ public class PersistenceFacadeImpl implements PersistenceFacade {
 
 	public PersistenceFacadeImpl() {
 		entityBuilder = new EntityBuilder();
+		logger = Logger.getLogger(LOGGER_NAME);
+	}
+	
+	@PostConstruct
+	public void postConstruct(){
+		logger.info("Course Rating Persistence Facade  successfully instantiated.");
 	}
 
 	public Lecture newLecture() {
 		return domainFactory.create(entityBuilder.createLectureEntity());
 	}
 
+	public void addLecturesIfNotAvailable(Map<String,String> nameToDescription){
+		if(nameToDescription == null){
+			return;
+		}
+		Lecture lecture;
+		String desc;
+		for(String name : nameToDescription.keySet()){
+			if(!getLecture(name).isPresent()){ 
+				desc = nameToDescription.get(name);
+				lecture = newLecture();
+				if(lecture.canSetLectureName(name) && lecture.getLectureDescription().canSetTextDescription(desc)){
+					lecture.setLectureName(name).getLectureDescription().setTextDescription(desc);
+					try{
+					  lecture.save();
+					}catch(Exception ex){
+						logger.log(Level.WARNING, "An exception occured while saving the lecture with name: " + name, ex);
+					}
+				}
+			}
+		}
+	}
 	public List<Lecture> getAllLectures() {
 		List<Lecture> resultList = Lists.newArrayList();
 		List<LectureEntity> list = dao.getAllLectureEntities();
@@ -92,7 +125,7 @@ public class PersistenceFacadeImpl implements PersistenceFacade {
 		if (opt.isPresent()) {
 			opt.get().delete();
 		} else {
-			// TODO logging...
+			logger.warning("The lecture " + name + " does not exist and hence can not be deleted.");
 		}
 	}
 

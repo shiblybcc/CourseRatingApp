@@ -6,19 +6,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-	<p:dialog header="Comment a lecture" widgetVar="cmtDialog" modal="false"
-		draggable="true" styleClass="custom-comment-dialog" resizable="false">
+	<p:dialog header="Comment" widgetVar="cmtDialog" modal="true"
+		draggable="true" styleClass="custom-dialog" resizable="false">
 
 		<h:form styleClass="custom-dialog-form">
 			<p:panelGrid columns="2" cellPadding="10" styleClass="comment-table">
-				<h:outputLabel value="Lecture name:"/>
-				<h:selectOneMenu value="#{commentBean.lectureName}" styleClass="comment-table-column">
-					<f:selectItems value="#{commentBean.getLabelToName()}" />
-				</h:selectOneMenu>
-
 				<h:outputLabel value="Title:" styleClass="custom-dialog-title"/>
-				<p:autoComplete value="#{commentBean.commentTitle}"
-					completeMethod="#{commentBean.getProposals()}" styleClass="comment-table-column"/>
+				<h:inputText value="#{commentBean.commentTitle}" styleClass="comment-table-column"/>
 
 				<h:outputLabel value="Content:" />
 				<h:inputTextarea value="#{commentBean.content}" styleClass="comment-table-column" cols="30" rows="5"/>

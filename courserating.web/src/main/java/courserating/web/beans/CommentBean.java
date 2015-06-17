@@ -1,13 +1,9 @@
 package courserating.web.beans;
 
-import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-
-import jersey.repackaged.com.google.common.collect.Lists;
+import javax.faces.bean.ViewScoped;
 
 import org.primefaces.context.RequestContext;
 
@@ -22,10 +18,13 @@ import courserating.persistence.interfaces.PersistenceFacade;
  *
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class CommentBean extends ExtendedAbstractBean {
 
 	private static final long serialVersionUID = 383L;
+	
+	protected String lectureName;
+	
 	private String commentTitle;
 	private String content;
     
@@ -37,12 +36,9 @@ public class CommentBean extends ExtendedAbstractBean {
 		super();
 	}
 	
-	@PostConstruct
-	public void init(){
-		super.init();
-		
+	public String getLectureName() {
+		return lectureName;
 	}
-	
 	
 	public String getCommentTitle() {
 		return this.commentTitle;
@@ -50,11 +46,6 @@ public class CommentBean extends ExtendedAbstractBean {
 
 	public void setCommentTitle(String param) {
 		this.commentTitle = param;
-	}
-
-	public List<String> getProposals() {
-		List<String> list = Lists.newArrayList();
-		return list;
 	}
 
 	public String getContent() {
@@ -70,12 +61,13 @@ public class CommentBean extends ExtendedAbstractBean {
 			facade.addComment(getLectureName(), getLectureDescription(getLectureName()), commentTitle, content);
 			RequestContext.getCurrentInstance().execute("PF('cmtDialog').hide(); location.reload()");
 		} else {
-		   showError("Error E004", "You need to specify a non empty title and content");
+		   showError("Error E004", "The comment can not be added.");
 		}
 	}
 
-	protected void doShowDialog() {
-		 RequestContext.getCurrentInstance().execute("PF('cmtDialog').show()");
+	protected void doShowDialog(String lectureName) {
+		this.lectureName = lectureName;
+		RequestContext.getCurrentInstance().execute("PF('cmtDialog').show()");
 	}
 
 }

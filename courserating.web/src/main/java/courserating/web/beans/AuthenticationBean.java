@@ -2,6 +2,7 @@ package courserating.web.beans;
 
 import java.util.Map;
 
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -9,6 +10,7 @@ import javax.faces.context.FacesContext;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.primefaces.context.RequestContext;
 
+import courserating.persistence.interfaces.PersistenceFacade;
 import courserating.web.authentication.AuthenticationResult;
 import courserating.web.authentication.L2pAccess;
 import courserating.web.authentication.TokenListener;
@@ -26,6 +28,9 @@ public class AuthenticationBean extends AbstractBean {
 
 	private static final long serialVersionUID = 9389373L;
 
+	@EJB
+	protected PersistenceFacade facade;
+	
 	public void getAuthenticationURL() {
 		if (isAuthenticated()) {
             showInfo("INFO", "You have already been authenticated.");
@@ -76,6 +81,7 @@ public class AuthenticationBean extends AbstractBean {
 				map.put(Constants.IS_AUTHENTICATED, true);
 				map.put(Constants.LECTURE_NAME_TO_DESCRIPTION, nameToDescription);
 			}
+			facade.addLecturesIfNotAvailable(nameToDescription);
 			sendAuthenticationStatusToClient(true);
 			
 		} catch (Exception e) {

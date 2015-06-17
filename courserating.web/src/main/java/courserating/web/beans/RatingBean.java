@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import org.primefaces.context.RequestContext;
 
@@ -23,7 +23,7 @@ import courserating.specification.RatingCategory;
  *
  */
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class RatingBean extends ExtendedAbstractBean{
 
 	private static final long serialVersionUID = 3988L;
@@ -31,18 +31,19 @@ public class RatingBean extends ExtendedAbstractBean{
     private Map<String,Integer> categoryNameToValue = Maps.newLinkedHashMap();
     private Map<String,Integer> valueNameToWeight = Maps.newLinkedHashMap();
     
+	protected String lectureName;
+    
     @EJB
 	protected PersistenceFacade facade;
     
     @PostConstruct
     public void init(){
-    	super.init();
     	Map<Rating,Integer> map = facade.getRatingToWeight();
     	for(Rating key : map.keySet()){
     		valueNameToWeight.put(key.name(), map.get(key));
     	}
     }
-    
+	
     public List<String> getCategoryNames(){
     	return RatingCategory.ALL;
     }
@@ -55,12 +56,13 @@ public class RatingBean extends ExtendedAbstractBean{
     }
     
     @Override
-	protected void doShowDialog() {
+	protected void doShowDialog(String name) {
+    	this.lectureName = name;
     	RequestContext.getCurrentInstance().execute("PF('rtDialog').show()");
 	}
 	
 	public void updateLectureRating(){
-		if(facade.updateLectureRating(getLectureName(), getLectureDescription(getLectureName()), categoryNameToValue)){
+		if(facade.updateLectureRating(lectureName, getLectureDescription(lectureName), categoryNameToValue)){
 			RequestContext.getCurrentInstance().execute("PF('rtDialog').hide(); location.reload()");
 		}else{
 			showError("Rating error: E005", "An internal error occured...");

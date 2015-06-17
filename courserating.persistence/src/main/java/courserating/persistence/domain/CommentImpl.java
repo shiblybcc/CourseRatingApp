@@ -66,7 +66,8 @@ public class CommentImpl extends AbstractComment<CommentEntity> implements Comme
 			sc.getState().setCommentEntity(getState());
 			getState().getSubCommentEntitys().add((SubCommentEntity)sc.getState());
 		}else{
-			//TODO logging...
+			String tmp = subComment != null ? subComment.toString() : "";
+			logger.warning("The system is not able to attach the following sub-comment:" + tmp + " to the comment with title:" + getTitle());
 		}
 		return this;
 	}

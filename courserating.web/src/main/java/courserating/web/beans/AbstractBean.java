@@ -17,6 +17,7 @@ import courserating.web.authentication.L2pAccess;
 import courserating.web.util.Constants;
 
 /**
+ * Base class of all bean classes.
  * 
  * @author CR Team
  *

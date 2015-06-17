@@ -11,14 +11,16 @@ import courserating.specification.CommentStatistics;
  * 
  * @author CR Team
  *
- * @param <T> can either be CommentEntity or SubCommentEntity
+ * @param <T>
+ *            can either be CommentEntity or SubCommentEntity
  */
-public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomainObject<T> implements BaseComment{
+public class AbstractComment<T extends BasicCommentEntity> extends
+		AbstractDomainObject<T> implements BaseComment {
 
 	private static final long serialVersionUID = 11223L;
 
 	private static final int MAX_CHARACTER_COUNT = 5000;
-	
+
 	protected AbstractComment(T state) {
 		super(state);
 	}
@@ -27,20 +29,22 @@ public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomai
 		return getState().getContent();
 	}
 
-	public boolean canSetContent(String param){
-	   boolean result = false;
-	   if(param != null){
-		   String tmp = param.replaceAll("\\s", "");
-		   result = !param.isEmpty() && !tmp.isEmpty() && param.length() < MAX_CHARACTER_COUNT;
-	   }
-	   return result;
+	public boolean canSetContent(String param) {
+		boolean result = false;
+		if (param != null) {
+			String tmp = param.replaceAll("\\s", "");
+			result = !param.isEmpty() && !tmp.isEmpty()
+					&& param.length() < MAX_CHARACTER_COUNT;
+		}
+		return result;
 	}
-	
+
 	public BaseComment setContent(String content) {
-		if(canSetContent(content)){
+		if (canSetContent(content)) {
 			this.getState().setContent(content);
-		}else{
-			//TODO logging ....
+		} else {
+			logger.warning("The system is not able to set '" + content
+					+ "' as the content of a comment.");
 		}
 		return this;
 	}
@@ -52,12 +56,13 @@ public class AbstractComment<T extends BasicCommentEntity> extends AbstractDomai
 	public CommentStatistics getStatistics() {
 		return factory.create(getState().getStatisticsEntity());
 	}
-	
-	public void save(){
+
+	public void save() {
 		getStatistics().save();
 		super.save();
 	}
-	public void delete(){
+
+	public void delete() {
 		this.getStatistics().delete();
 		super.delete();
 	}

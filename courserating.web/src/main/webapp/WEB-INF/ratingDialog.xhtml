@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
-	<p:dialog header="Rate a lecture" widgetVar="rtDialog" modal="false"
+	<p:dialog header="Update rating" widgetVar="rtDialog" modal="true"
 		draggable="true" styleClass="custom-dialog" resizable="false">
 		<h:form id="rtdialog-form">
 			<h:dataTable cellspacing="10" var="category"
@@ -15,18 +15,10 @@
 				headerClass="order-table-header"
 				rowClasses="order-table-odd-row,order-table-even-row"
 				columnClasses="order-table-odd-column,order-table-even-column">
-				
 				<h:column>
-					<f:facet name="header">Lecture name:</f:facet>
 					<h:outputLabel value="#{category}:" styleClass="comment-table-column" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">
-						<h:selectOneMenu value="#{ratingBean.lectureName}"
-							styleClass="table-header-control" id="rtdialog-dropdown">
-							<f:selectItems value="#{ratingBean.getLabelToName()}" />
-						</h:selectOneMenu>
-					</f:facet>
 					<h:selectOneMenu
 						value="#{ratingBean.categoryNameToValue[category]}" styleClass="column-inside-content">
 						<f:selectItems value="#{ratingBean.valueNameToWeight}" />

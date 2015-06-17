@@ -78,7 +78,9 @@ public class LectureImpl extends AbstractDomainObject<LectureEntity> implements
 			this.getState().getCommentEntitys()
 					.add(c.getState());
 		} else {
-			// TODO logging...
+	      String tmp = comment != null ? comment.toString() : "";
+		  logger.warning("The system is not able to add the following comment " +
+	      tmp + " to the comment list of " + getLectureName() +".");
 		}
 		return this;
 	}

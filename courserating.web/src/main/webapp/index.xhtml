@@ -16,25 +16,31 @@
 				<table  class="table table-striped">
 					<thead>
 						<tr>
-							<th>Rating</th>
-							<th>#Comment</th>
-							<th>Rating Freq</th>
-							<th>Course Name</th>
+						    <th>Course Name</th>
+							<th style="text-align:center;">Rating</th>
+							<th style="text-align:center;">Rating Freq</th>
+							<th style="text-align:center;">#Comment</th>
+							<th style="text-align:center;">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<ui:repeat var="lecture" value="#{mainBean.getLectures()}" varStatus="status">
 							<tr>
-								<td>#{lecture.getStatistics().getLectureRating().name()}</td>
-								<td>#{lecture.getCommentCount()}</td>
-								<td>#{lecture.getStatistics().getRatingCount()}</td>
-								<td>
+							    <td>
 								  <h:form>
 										<h:link outcome="lecture" value="#{lecture.getLectureName()}">
 										   <f:param name="lectureName" value="#{lecture.getLectureName()}"/> 
 										</h:link>
 									</h:form>
 									<div class="content-bottom"></div>
+								</td>
+								<td style="text-align:center;">#{lecture.getStatistics().getLectureRating().name()}</td>
+								<td style="text-align:center;">#{lecture.getStatistics().getRatingCount()}</td>
+								<td style="text-align:center;">#{lecture.getCommentCount()}</td>
+								<td style="text-align:center;">
+								  <h:form>
+								    <p:commandLink value="Rate" action="#{ratingBean.showDialog(lecture.getLectureName())}"/>
+								  </h:form>
 								</td>
 							</tr>
 						</ui:repeat>

@@ -1,5 +1,7 @@
 package courserating.persistence.domain;
 
+import java.util.logging.Logger;
+
 import courserating.persistence.entities.AbstractEntity;
 import courserating.persistence.util.DomainObjectFactory;
 import courserating.persistence.util.StateManager;
@@ -17,6 +19,10 @@ public abstract class AbstractDomainObject<T extends AbstractEntity> implements 
 
 	private static final long serialVersionUID = 938383937L;
 
+	private static final String LOGGER_NAME = "courserating.persistence.domain";
+	
+	protected Logger logger;
+	
 	protected T state;
 	
 	protected DomainObjectFactory factory;
@@ -28,6 +34,7 @@ public abstract class AbstractDomainObject<T extends AbstractEntity> implements 
 			throw new IllegalArgumentException("The state can not be null");
 		}
 		this.state = state;
+		logger = Logger.getLogger(LOGGER_NAME);
 	}
 	
 	public T getState(){

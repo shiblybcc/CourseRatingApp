@@ -2,7 +2,10 @@ package courserating.persistence.dao;
 
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,12 +28,21 @@ import courserating.persistence.util.StringUtil;
 @Stateless
 public class DaoImpl implements Dao {
 
+	private static final String LOGGER_NAME = "courserating.persistence.dao";
+	
 	@PersistenceContext(unitName = "courseRatingPersistenceUnit")
 	private EntityManager manager;
 	
+	private Logger logger;
+	
 	public DaoImpl(){
+		logger = Logger.getLogger(LOGGER_NAME);
 	}
 	
+	@PostConstruct
+	public void postConstruct(){
+		logger.info("Course Rating Persistence Dao successfully instantiated.");
+	}
 	/*
 	 * For test purpose
 	 */
@@ -95,7 +107,7 @@ public class DaoImpl implements Dao {
 			  result.addAll((List<LectureEntity>)query.getResultList());
 		  }
 		}catch(Exception ex){
-			//TODO logging...
+			logger.log(Level.WARNING, "The following exception occured while performing a search request with query: " + name + ".", ex);
 		}
 		return result;
 	}

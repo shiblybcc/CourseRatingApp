@@ -29,6 +29,13 @@ public interface PersistenceFacade {
 	public Lecture newLecture();
 	
 	/**
+	 * Adds the given data to the DB if not available.
+	 * 
+	 * @param nameToDescription  A map of lecture name to corresponding description.
+	 */
+	public void addLecturesIfNotAvailable(Map<String,String> nameToDescription);
+	
+	/**
 	 * @return all available lectures.
 	 */
 	public List<Lecture> getAllLectures();

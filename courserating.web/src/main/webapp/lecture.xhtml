@@ -35,6 +35,9 @@
 			</p:dialog>
 
 			<h2 class="sub-header">#{lectureBean.getLectureName()}</h2>
+			<h:form>
+			  <p:commandButton value="New Comment" action="#{commentBean.showDialog(lectureBean.getLectureName())}" styleClass="modal-button" title="Add a new comment"/>
+			</h:form>
 			<p:tabView>
 				<p:tab title="Comments">
 					<h:form>
@@ -64,7 +67,9 @@
 
 								<h:panelGrid columns="1">
 									<h:outputText value="#{comment.getTitle()}" styleClass="comment-title" />
-									<h:outputText value="#{comment.getContent()}" styleClass="comment-content" />
+									<p>
+									  #{comment.getContent()}
+									</p>
 									<h:panelGrid columns="2" cellspacing="10" columnClasses=",comment-date-cell">
 									  <p:commandLink value="Reply" 
 									      action="#{lectureBean.setCommentTitle(comment.getTitle())}" 
