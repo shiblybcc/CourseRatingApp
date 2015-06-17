@@ -47,7 +47,7 @@ public abstract class AbstractBean implements Serializable{
 		RequestContext.getCurrentInstance().showMessageInDialog(msg);
 	}
 	
-	protected boolean isAuthenticated(){
+	public boolean isAuthenticated(){
 		return (Boolean)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(Constants.IS_AUTHENTICATED);
 	}
 	

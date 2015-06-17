@@ -63,7 +63,9 @@ public class AuthenticationBean extends AbstractBean {
 				}
 				@Override
 				public void tokensNotAvailable() {
-					sendAuthenticationStatusToClient(false);
+					//hide wait dialog
+					RequestContext.getCurrentInstance()
+					.execute("PF('statusDialog').hide();location.reload()");
 				}
 			});
 			l2pAccess.retrieveTokens();
@@ -82,22 +84,13 @@ public class AuthenticationBean extends AbstractBean {
 				map.put(Constants.LECTURE_NAME_TO_DESCRIPTION, nameToDescription);
 			}
 			facade.addLecturesIfNotAvailable(nameToDescription);
-			sendAuthenticationStatusToClient(true);
 			
 		} catch (Exception e) {
-			sendAuthenticationStatusToClient(false);
 			showError("Authentication Error E003","An internal error occured...");
-		}
-	}
-
-	private void sendAuthenticationStatusToClient(boolean isAuthenticationSuccessful){
-		
-		//hide wait dialog
-		RequestContext.getCurrentInstance().execute("PF('statusDialog').hide();location.reload()");
-		if(isAuthenticationSuccessful){
-			RequestContext.getCurrentInstance().addCallbackParam("isUserAuthenticated", true);
-		}else{
-			RequestContext.getCurrentInstance().addCallbackParam("isUserAuthenticated", false);
+		}finally{
+			//hide wait dialog
+			RequestContext.getCurrentInstance()
+			.execute("PF('statusDialog').hide();location.reload()");
 		}
 	}
 	
@@ -111,7 +104,6 @@ public class AuthenticationBean extends AbstractBean {
 			map.remove(Constants.LECTURE_NAME_TO_DESCRIPTION);
 		}
 		getL2pAccessService().close();
-		//send param to UI ...
-		showInfo("Unauthentication Successful", "You have been successfully un-authenticated");
+		RequestContext.getCurrentInstance().execute("location.reload()");
 	}
 }

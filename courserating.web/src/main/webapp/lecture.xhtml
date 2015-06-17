@@ -67,9 +67,8 @@
 
 								<h:panelGrid columns="1">
 									<h:outputText value="#{comment.getTitle()}" styleClass="comment-title" />
-									<p>
-									  #{comment.getContent()}
-									</p>
+									<h:outputText value="#{comment.getContent()}" styleClass="comment-content"/>
+									 
 									<h:panelGrid columns="2" cellspacing="10" columnClasses=",comment-date-cell">
 									  <p:commandLink value="Reply" 
 									      action="#{lectureBean.setCommentTitle(comment.getTitle())}" 
@@ -80,7 +79,7 @@
 									<ui:repeat var="subComment"
 										value="#{comment.getAllSubComments()}">
 										<hr />
-										<h:outputText value="#{subComment.getContent()}" />
+										<h:outputText value="#{subComment.getContent()}" styleClass="comment-content"/>
 										<div>
 											<h:outputText
 												value=" Edited on #{subComment.getEditionDate().toString()}" styleClass="comment-date"/>

@@ -167,6 +167,9 @@ a {
 	color: #363636;
 }
 
+.comment-content{
+	width: 80%;
+}
 .comment-date{
 	color: #999;
 }

@@ -51,21 +51,29 @@
 								styleClass="button search-button" /></li>
 						<li><p:commandButton id="hidden_link"
 								action="#{authenticationBean.retrieveLectureNames()}"
+								oncomplete="handleAuthenticationStatus(xhr,status,args)"
 								style="display: none" /></li>
 						<li><h:link value="Help" styleClass="button" outcome="help"
 								title="How To Use This Site" /></li>
-						<li><p:commandLink id="sign_in_id"
+						<li></li>
+					   <li>
+					   <div id='signin_id'>
+					   <p:commandLink id="sign_in_id"
 								action="#{authenticationBean.getAuthenticationURL()}"
-								oncomplete="handleRedirection(xhr,status,args)">
+								oncomplete="handleRedirection(xhr,status,args)"
+								rendered="#{!authenticationBean.isAuthenticated()}">
 								<h:graphicImage id="sign_in" alt="Authenticate" name="login.png"
 									library="images" title="Authenticate" styleClass="sign" />
-							</p:commandLink></li>
-					   <li>
+							</p:commandLink>
+							</div>
+							<div id='signout_id'>
 						<p:commandLink id="sign_out_id"
-							action="#{authenticationBean.signOut()}">
+							action="#{authenticationBean.signOut()}"
+							rendered="#{authenticationBean.isAuthenticated()}">
 							<h:graphicImage id="sign_out" alt="Sign out" name="logout.png"
 								library="images" title="Unauthenticate" styleClass="sign" />
-						</p:commandLink></li>
+						</p:commandLink>
+						</div></li>
 					</ul>
 				</div>
 			</h:form>
