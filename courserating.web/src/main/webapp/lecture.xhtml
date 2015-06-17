@@ -34,10 +34,13 @@
 				</h:form>
 			</p:dialog>
 
-			<h2 class="sub-header">#{lectureBean.getLectureName()}</h2>
-			<h:form>
-			  <p:commandButton value="New Comment" action="#{commentBean.showDialog(lectureBean.getLectureName())}" styleClass="modal-button" title="Add a new comment"/>
+			<h2 style="margin-bottom: 20px;" class="sub-header">#{lectureBean.getLectureName()}
+			
+			<h:form style="font-size: 15px; float: right;">
+			  <p:commandButton style="height: 43px;margin-right: 10px !important;width: 170px;" value="New Comment" action="#{commentBean.showDialog(lectureBean.getLectureName())}" styleClass="modal-button" title="Add a new comment"/>
 			</h:form>
+			</h2>
+			
 			<p:tabView>
 				<p:tab title="Comments">
 					<h:form>

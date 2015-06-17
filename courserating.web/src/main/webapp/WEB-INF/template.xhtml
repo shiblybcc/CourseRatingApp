@@ -30,7 +30,7 @@
 	<ui:include src="/WEB-INF/statusDialog.xhtml" />
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
-		<div style="padding-left: 5%; padding-right: 10%;">
+		<div style="padding-right: 10%;">
 
 			<h:form id="form_id">
 				<h:link outcome="index">
@@ -53,10 +53,7 @@
 								action="#{authenticationBean.retrieveLectureNames()}"
 								oncomplete="handleAuthenticationStatus(xhr,status,args)"
 								style="display: none" /></li>
-						<li><h:link value="Help" styleClass="button" outcome="help"
-								title="How To Use This Site" /></li>
-						<li></li>
-					   <li>
+						 <li style="float: right;margin-top: 5px;">
 					   <div id='signin_id'>
 					   <p:commandLink id="sign_in_id"
 								action="#{authenticationBean.getAuthenticationURL()}"
@@ -74,6 +71,10 @@
 								library="images" title="Unauthenticate" styleClass="sign" />
 						</p:commandLink>
 						</div></li>
+						<li style="float: right; font-size: 20px;"><h:link value="Help" styleClass="button" outcome="help"
+								title="How To Use This Site" /></li>
+						
+					  
 					</ul>
 				</div>
 			</h:form>

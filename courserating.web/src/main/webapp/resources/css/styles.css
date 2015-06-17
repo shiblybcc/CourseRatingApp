@@ -103,7 +103,7 @@ footer {
 }
 
 .our-logo {
-	width: 210px;
+	width: 14%;
 	float: left;
 }
 
@@ -194,9 +194,9 @@ a {
 
 .top-header {
 	float: left;
-	margin-left: 5%;
+	margin-left: 1%;
 	margin-top: 7px;
-	width: 75%;
+	width: 77%;
 }
 
 .search-bar {
