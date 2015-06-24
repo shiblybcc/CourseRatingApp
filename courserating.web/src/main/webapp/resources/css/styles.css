@@ -335,3 +335,7 @@ body {
 	vertical-align:top;
 	padding-right: 5px;
 }
+
+.long-image{
+	width: 100%;
+}
