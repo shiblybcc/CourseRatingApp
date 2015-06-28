@@ -322,6 +322,8 @@ body {
 
 .authenticate{
 	border: 1px solid black;
+	width: 75%;
+	height: 275px;
 }
 
 .comment-tab-feedback{
@@ -337,5 +339,5 @@ body {
 }
 
 .long-image{
-	width: 100%;
+	height: auto !important;
 }
