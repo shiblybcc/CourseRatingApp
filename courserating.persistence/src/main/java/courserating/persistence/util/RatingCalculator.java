@@ -2,8 +2,6 @@ package courserating.persistence.util;
 
 import java.util.Map;
 
-import jersey.repackaged.com.google.common.collect.Maps;
-
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ImmutableBiMap;
 
@@ -49,18 +47,4 @@ public class RatingCalculator {
 		}
 		return getRatingToWeight().inverse().get(weight);
 	}
-	
-	/*
-	 * Test case
-	public static void main(String[] args){
-		Rating r = Rating.FAIR;
-		Map<String,Integer> map = Maps.newHashMap();
-		map.put("a", -2);
-		map.put("b", 1);
-		map.put("c", 3);
-		map.put("d", 1);
-		map.put("e", -3);
-		System.out.println("INFO >> " + calculateRating(r, map));
-	}
-	*/
 }
